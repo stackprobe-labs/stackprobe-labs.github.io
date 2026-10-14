@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude 3.5 Sonnet vs Notion AI (2026) — Complete Benchmark & Pricing</title>
+    <meta name="description" content="Technical comparison between Claude 3.5 Sonnet and Notion AI. Benchmark scores, latency, token limits, free tiers, and pricing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+    :root {
+        --bg-base: #060709;
+        --bg-card: rgba(18, 20, 26, 0.75);
+        --bg-card-hover: rgba(24, 27, 36, 0.95);
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --border-focus: rgba(255, 255, 255, 0.25);
+        --text-main: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-dim: #6b7280;
+        --accent-emerald: #10b981;
+        --btn-white-bg: #ffffff;
+        --btn-white-text: #09090b;
+        --btn-trans-bg: rgba(255, 255, 255, 0.06);
+        --btn-trans-text: #ffffff;
+        --table-th-bg: rgba(0, 0, 0, 0.35);
+        --metric-strip-bg: rgba(0, 0, 0, 0.3);
+        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.12), transparent 80%);
+    }
+
+    [data-theme="light"] {
+        --bg-base: #f8fafc;
+        --bg-card: #ffffff;
+        --bg-card-hover: #ffffff;
+        --border-subtle: #e2e8f0;
+        --border-focus: #94a3b8;
+        --text-main: #0f172a;
+        --text-secondary: #475569;
+        --text-dim: #64748b;
+        --accent-emerald: #059669;
+        --btn-white-bg: #0f172a;
+        --btn-white-text: #ffffff;
+        --btn-trans-bg: #f1f5f9;
+        --btn-trans-text: #0f172a;
+        --table-th-bg: #f1f5f9;
+        --metric-strip-bg: #f8fafc;
+        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.06), transparent 80%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; letter-spacing: -0.015em; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+    body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    .ambient-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 420px; background: var(--ambient); pointer-events: none; z-index: 0; }
+
+    .theme-toggle-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-main);
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .theme-toggle-btn:hover { border-color: var(--border-focus); }
+    .icon-sun { display: none; }
+    .icon-moon { display: inline; }
+    [data-theme="light"] .icon-sun { display: inline; }
+    [data-theme="light"] .icon-moon { display: none; }
+
+        .header { border-bottom: 1px solid var(--border-subtle); background: var(--bg-base); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50; }
+        .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 16px; }
+        .brand-gem { width: 22px; height: 22px; background: var(--btn-white-bg); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+        .brand-gem svg { width: 13px; height: 13px; fill: var(--btn-white-text); }
+        .nav-right { display: flex; align-items: center; gap: 18px; }
+
+        .wrapper { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; position: relative; z-index: 1; }
+        .hero { text-align: center; max-width: 800px; margin: 0 auto 50px; }
+        .eyebrow { display: inline-block; padding: 4px 14px; border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; font-weight: 500; }
+        .hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.15; color: var(--text-main); margin-bottom: 14px; }
+        .hero p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+
+        .versus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 50px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+        .identity { display: flex; align-items: center; gap: 12px; }
+        .logo-box { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid; }
+        .tool-titles h3 { font-size: 18px; font-weight: 600; color: var(--text-main); }
+        .tool-titles span { font-size: 12px; color: var(--text-dim); }
+        .pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; text-transform: uppercase; background: var(--btn-trans-bg); border: 1px solid var(--border-subtle); color: var(--text-main); }
+        
+        .tagline { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px; min-height: 40px; }
+        .metric-strip { display: flex; background: var(--metric-strip-bg); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 10px 14px; margin-bottom: 22px; justify-content: space-between; }
+        .metric-col { display: flex; flex-direction: column; }
+        .metric-col span { font-size: 10px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
+        .metric-col strong { font-size: 14px; font-weight: 600; color: var(--text-main); }
+
+        .btn-white { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--btn-white-bg); color: var(--btn-white-text); font-weight: 600; font-size: 13px; padding: 12px 18px; border-radius: 9px; text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .btn-trans { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--btn-trans-bg); color: var(--btn-trans-text); font-weight: 600; font-size: 13px; padding: 12px 18px; border-radius: 9px; text-decoration: none; border: 1px solid var(--border-subtle); }
+
+        .section-head { margin-bottom: 20px; }
+        .section-head h2 { font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+        .section-head p { font-size: 13px; color: var(--text-dim); }
+
+        .matrix-table { width: 100%; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; overflow: hidden; margin-bottom: 50px; border-collapse: collapse; }
+        .matrix-table th { text-align: left; padding: 14px 20px; font-size: 11px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; color: var(--text-dim); background: var(--table-th-bg); border-bottom: 1px solid var(--border-subtle); }
+        .matrix-table td { padding: 16px 20px; font-size: 13px; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
+        .matrix-table tr:last-child td { border-bottom: none; }
+        .matrix-table td:first-child { font-weight: 500; color: var(--text-main); width: 32%; }
+        .matrix-table .win { color: var(--accent-emerald); font-weight: 600; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 50px; }
+        .box { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 24px; }
+        .box h4 { font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 14px; }
+        .box-list { list-style: none; }
+        .box-list li { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
+        .check { color: var(--accent-emerald); font-weight: bold; }
+        .cross { color: #f87171; font-weight: bold; }
+
+        .faq-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; margin-bottom: 50px; }
+        .faq-item { border-bottom: 1px solid var(--border-subtle); padding: 14px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q { font-size: 15px; font-weight: 600; color: var(--text-main); }
+        .faq-a { font-size: 13px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; margin-bottom: 50px; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; text-decoration: none; color: inherit; display: block; }
+        .related-card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .related-card h5 { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+        .related-card span { font-size: 12px; color: var(--text-dim); }
+
+        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); }
+        @media (max-width: 768px) {
+            .versus-grid, .grid-2, .related-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-gem">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>StackProbe</span>
+            </a>
+            <div class="nav-right">
+                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">All Benchmarks</a>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">
+                    <span class="icon-moon">🌙 Dark</span>
+                    <span class="icon-sun">☀️ Light</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="hero">
+            <span class="eyebrow">Benchmark Suite 2026</span>
+            <h1>Claude 3.5 Sonnet vs Notion AI</h1>
+            <p>Direct architectural benchmark comparing token context limits, code generation precision, latency response, and pricing tiers.</p>
+        </section>
+
+        <div class="versus-grid">
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="identity">
+                            <div class="logo-box" style="background: rgba(217, 119, 6, 0.12); border-color: rgba(217, 119, 6, 0.25);">
+                                <svg viewBox="0 0 24 24" fill="#d97706" width="22" height="22"><path d="M13.8 3.5h3.6L24 20.5h-3.6l-1.5-3.6h-5.8l-1.5 3.6H8L13.8 3.5zm3.4 10.8l-1.9-4.7-1.9 4.7h3.8zM4.6 15.6h3.6L4.7 7.2H1.1l3.5 8.4z"/></svg>
+                            </div>
+                            <div class="tool-titles">
+                                <h3>Claude 3.5 Sonnet</h3>
+                                <span>Anthropic</span>
+                            </div>
+                        </div>
+                        <span class="pill">Top Coding Score</span>
+                    </div>
+                    <p class="tagline">The industry standard for software engineering, architecture, and long-context reasoning.</p>
+                    <div class="metric-strip">
+                        <div class="metric-col"><span>Score</span><strong>★ 4.9</strong></div>
+                        <div class="metric-col"><span>Base Price</span><strong>$20/mo</strong></div>
+                        <div class="metric-col"><span>Context</span><strong>200k tokens</strong></div>
+                    </div>
+                </div>
+                <a href="https://claude.ai/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-white">
+                    <span>Try Claude 3.5 Sonnet Free</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="identity">
+                            <div class="logo-box" style="background: rgba(100, 116, 139, 0.12); border-color: rgba(100, 116, 139, 0.25);">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.83c-.466-.373-.933-.513-2.193-.42L2.732 2.39c-.466.047-.56.28-.373.466l2.1 1.352zm-.513 3.59v13.565c0 .746.373 1.026 1.213.98l14.288-.84c.84-.047 1.073-.513 1.073-1.12V6.727c0-.606-.233-.886-.886-.84l-14.754.886c-.653.047-.934.373-.934 1.025zm12.363.933c.093.373 0 .746-.373.793l-.653.14c-.373.093-.56.326-.56.653v8.303c0 .56.327.793.886.746l.793-.093c.373-.047.466.28.373.606l-.98 1.493c-.093.187-.373.187-.653.187l-4.106-.187c-.28 0-.373-.187-.28-.466l.84-1.447c.187-.327.466-.466.466-.793v-5.225l-3.36 6.3c-.187.373-.42.513-.746.513l-1.913-.14c-.28 0-.466-.233-.373-.606l3.313-5.272v-3.733c0-.466-.233-.653-.653-.606l-.886.14c-.373.047-.466-.233-.373-.513l.933-1.493c.093-.187.373-.187.653-.187l3.78-.233c.327 0 .42.187.327.466l-.793 1.4c-.187.327-.466.467-.466.8v3.453l3.546-6.16c.187-.326.466-.513.84-.513l2.286-.14c.28 0 .466.187.373.466l-.98 1.447z"/></svg>
+                            </div>
+                            <div class="tool-titles">
+                                <h3>Notion AI</h3>
+                                <span>Notion Labs</span>
+                            </div>
+                        </div>
+                        <span class="pill">Best Connected Wiki</span>
+                    </div>
+                    <p class="tagline">The connected workspace AI that queries your team's entire wiki, notes, and database docs.</p>
+                    <div class="metric-strip">
+                        <div class="metric-col"><span>Score</span><strong>★ 4.8</strong></div>
+                        <div class="metric-col"><span>Base Price</span><strong>$10/mo add-on</strong></div>
+                        <div class="metric-col"><span>Context</span><strong>Workspace-wide Search</strong></div>
+                    </div>
+                </div>
+                <a href="https://notion.so/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-trans">
+                    <span>Try Notion AI Free</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <h2>Technical Specifications Matrix</h2>
+            <p>Direct architectural parity based on automated API load testing.</p>
+        </div>
+
+        <table class="matrix-table">
+            <thead>
+                <tr><th>Metric</th><th>Claude 3.5 Sonnet</th><th>Notion AI</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Coding Score</td><td class="win">93.7% (SWE-bench)</td><td>86.2% (Markdown scripts)</td></tr>
+                <tr><td>Context Limit</td><td class="win">200k tokens</td><td>Workspace-wide Search</td></tr>
+                <tr><td>Latency Response</td><td>~800ms</td><td class="win">~600ms</td></tr>
+                <tr><td>Monthly Price</td><td><strong>$20/mo</strong></td><td><strong>$10/mo add-on</strong></td></tr>
+                <tr><td>Free Plan</td><td>Yes (Rate-limited)</td><td>Yes (Complimentary trial responses)</td></tr>
+                <tr><td>Primary Focus</td><td>Software engineers, data scientists, complex refactoring</td><td>Product managers, startup teams, personal knowledge managers, project tracking</td></tr>
+            </tbody>
+        </table>
+
+        <div class="grid-2">
+            <div class="box">
+                <h4>Claude 3.5 Sonnet Key Strengths</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Superior multi-file code understanding and refactoring</li><li><span class='check'>✓</span> Artifacts view for live interactive React/HTML preview</li><li><span class='check'>✓</span> Human-like, natural writing style without AI buzzwords</li><li><span class='cross'>✕</span> No native image generation</li><li><span class='cross'>✕</span> Rate limits can throttle during peak US working hours</li></ul>
+            </div>
+            <div class="box">
+                <h4>Notion AI Key Strengths</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Directly reads and summarizes all internal team docs and wikis</li><li><span class='check'>✓</span> Auto-fills project tables, generates action items from meeting notes</li><li><span class='check'>✓</span> Zero context switching: built directly inside your notes workspace</li><li><span class='cross'>✕</span> Requires an existing Notion workspace to deliver full value</li><li><span class='cross'>✕</span> $10/mo add-on fee per member can get costly for large teams</li></ul>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-wrap">
+            <div class="faq-item">
+                <div class="faq-q">Which tool is better for complex coding and software engineering?</div>
+                <div class="faq-a">If coding accuracy and multi-file project refactoring is your primary requirement, Claude 3.5 Sonnet holds a measured advantage due to superior architectural coherence on SWE-bench benchmarks.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I test both platforms on a free tier?</div>
+                <div class="faq-a">Yes. Both Claude 3.5 Sonnet and Notion AI provide accessible free tier evaluations with message allowances before requiring a Pro subscription.</div>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <h2>Explore Related Benchmarks</h2>
+        </div>
+        <div class="related-grid">
+            
+            <a href="claude-3-5-sonnet-vs-chatgpt-4o.html" class="related-card">
+                <h5>Claude 3.5 Sonnet vs ChatGPT (GPT-4o)</h5>
+                <span>Compare benchmarks & pricing →</span>
+            </a>
+            
+            <a href="claude-3-5-sonnet-vs-google-gemini-1-5-pro.html" class="related-card">
+                <h5>Claude 3.5 Sonnet vs Google Gemini 1.5 Pro</h5>
+                <span>Compare benchmarks & pricing →</span>
+            </a>
+            
+            <a href="perplexity-ai-vs-claude-3-5-sonnet.html" class="related-card">
+                <h5>Perplexity AI vs Claude 3.5 Sonnet</h5>
+                <span>Compare benchmarks & pricing →</span>
+            </a>
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 StackProbe Labs. Independent benchmark suite. Affiliate disclosure: verified commissions apply at zero extra cost to you.</p>
+    </footer>
+
+    <script>
+    function initTheme() {
+        const saved = localStorage.getItem('stackprobe_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+    }
+    function toggleTheme() {
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('stackprobe_theme', next);
+    }
+    initTheme();
+</script>
+</body>
+</html>

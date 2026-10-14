@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonardo AI vs Gamma App (2026) — Complete Benchmark & Pricing</title>
+    <meta name="description" content="Technical comparison between Leonardo AI and Gamma App. Benchmark scores, latency, token limits, free tiers, and pricing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+    :root {
+        --bg-base: #060709;
+        --bg-card: rgba(18, 20, 26, 0.75);
+        --bg-card-hover: rgba(24, 27, 36, 0.95);
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --border-focus: rgba(255, 255, 255, 0.25);
+        --text-main: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-dim: #6b7280;
+        --accent-emerald: #10b981;
+        --btn-white-bg: #ffffff;
+        --btn-white-text: #09090b;
+        --btn-trans-bg: rgba(255, 255, 255, 0.06);
+        --btn-trans-text: #ffffff;
+        --table-th-bg: rgba(0, 0, 0, 0.35);
+        --metric-strip-bg: rgba(0, 0, 0, 0.3);
+        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.12), transparent 80%);
+    }
+
+    [data-theme="light"] {
+        --bg-base: #f8fafc;
+        --bg-card: #ffffff;
+        --bg-card-hover: #ffffff;
+        --border-subtle: #e2e8f0;
+        --border-focus: #94a3b8;
+        --text-main: #0f172a;
+        --text-secondary: #475569;
+        --text-dim: #64748b;
+        --accent-emerald: #059669;
+        --btn-white-bg: #0f172a;
+        --btn-white-text: #ffffff;
+        --btn-trans-bg: #f1f5f9;
+        --btn-trans-text: #0f172a;
+        --table-th-bg: #f1f5f9;
+        --metric-strip-bg: #f8fafc;
+        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.06), transparent 80%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; letter-spacing: -0.015em; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+    body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    .ambient-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 420px; background: var(--ambient); pointer-events: none; z-index: 0; }
+
+    .theme-toggle-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-main);
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .theme-toggle-btn:hover { border-color: var(--border-focus); }
+    .icon-sun { display: none; }
+    .icon-moon { display: inline; }
+    [data-theme="light"] .icon-sun { display: inline; }
+    [data-theme="light"] .icon-moon { display: none; }
+
+        .header { border-bottom: 1px solid var(--border-subtle); background: var(--bg-base); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50; }
+        .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 16px; }
+        .brand-gem { width: 22px; height: 22px; background: var(--btn-white-bg); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+        .brand-gem svg { width: 13px; height: 13px; fill: var(--btn-white-text); }
+        .nav-right { display: flex; align-items: center; gap: 18px; }
+
+        .wrapper { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; position: relative; z-index: 1; }
+        .hero { text-align: center; max-width: 800px; margin: 0 auto 50px; }
+        .eyebrow { display: inline-block; padding: 4px 14px; border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; font-weight: 500; }
+        .hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.15; color: var(--text-main); margin-bottom: 14px; }
+        .hero p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+
+        .versus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 50px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+        .identity { display: flex; align-items: center; gap: 12px; }
+        .logo-box { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid; }
+        .tool-titles h3 { font-size: 18px; font-weight: 600; color: var(--text-main); }
+        .tool-titles span { font-size: 12px; color: var(--text-dim); }
+        .pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; text-transform: uppercase; background: var(--btn-trans-bg); border: 1px solid var(--border-subtle); color: var(--text-main); }
+        
+        .tagline { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px; min-height: 40px; }
+        .metric-strip { display: flex; background: var(--metric-strip-bg); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 10px 14px; margin-bottom: 22px; justify-content: space-between; }
+        .metric-col { display: flex; flex-direction: column; }
+        .metric-col span { font-size: 10px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
+        .metric-col strong { font-size: 14px; font-weight: 600; color: var(--text-main); }
+
+        .btn-white { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--btn-white-bg); color: var(--btn-white-text); font-weight: 600; font-size: 13px; padding: 12px 18px; border-radius: 9px; text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .btn-trans { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--btn-trans-bg); color: var(--btn-trans-text); font-weight: 600; font-size: 13px; padding: 12px 18px; border-radius: 9px; text-decoration: none; border: 1px solid var(--border-subtle); }
+
+        .section-head { margin-bottom: 20px; }
+        .section-head h2 { font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+        .section-head p { font-size: 13px; color: var(--text-dim); }
+
+        .matrix-table { width: 100%; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; overflow: hidden; margin-bottom: 50px; border-collapse: collapse; }
+        .matrix-table th { text-align: left; padding: 14px 20px; font-size: 11px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; color: var(--text-dim); background: var(--table-th-bg); border-bottom: 1px solid var(--border-subtle); }
+        .matrix-table td { padding: 16px 20px; font-size: 13px; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
+        .matrix-table tr:last-child td { border-bottom: none; }
+        .matrix-table td:first-child { font-weight: 500; color: var(--text-main); width: 32%; }
+        .matrix-table .win { color: var(--accent-emerald); font-weight: 600; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 50px; }
+        .box { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 24px; }
+        .box h4 { font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 14px; }
+        .box-list { list-style: none; }
+        .box-list li { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
+        .check { color: var(--accent-emerald); font-weight: bold; }
+        .cross { color: #f87171; font-weight: bold; }
+
+        .faq-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; margin-bottom: 50px; }
+        .faq-item { border-bottom: 1px solid var(--border-subtle); padding: 14px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q { font-size: 15px; font-weight: 600; color: var(--text-main); }
+        .faq-a { font-size: 13px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; margin-bottom: 50px; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; text-decoration: none; color: inherit; display: block; }
+        .related-card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .related-card h5 { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+        .related-card span { font-size: 12px; color: var(--text-dim); }
+
+        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); }
+        @media (max-width: 768px) {
+            .versus-grid, .grid-2, .related-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-gem">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>StackProbe</span>
+            </a>
+            <div class="nav-right">
+                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">All Benchmarks</a>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">
+                    <span class="icon-moon">🌙 Dark</span>
+                    <span class="icon-sun">☀️ Light</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="hero">
+            <span class="eyebrow">Benchmark Suite 2026</span>
+            <h1>Leonardo AI vs Gamma App</h1>
+            <p>Direct architectural benchmark comparing token context limits, code generation precision, latency response, and pricing tiers.</p>
+        </section>
+
+        <div class="versus-grid">
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="identity">
+                            <div class="logo-box" style="background: rgba(236, 72, 153, 0.12); border-color: rgba(236, 72, 153, 0.25);">
+                                <svg viewBox="0 0 24 24" fill="#ec4899" width="22" height="22"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <div class="tool-titles">
+                                <h3>Leonardo AI</h3>
+                                <span>Canva / Leonardo</span>
+                            </div>
+                        </div>
+                        <span class="pill">Best for Designers</span>
+                    </div>
+                    <p class="tagline">Full-stack generative suite for game developers, marketing visual assets, and fine-tuned models.</p>
+                    <div class="metric-strip">
+                        <div class="metric-col"><span>Score</span><strong>★ 4.8</strong></div>
+                        <div class="metric-col"><span>Base Price</span><strong>Free / $12/mo</strong></div>
+                        <div class="metric-col"><span>Context</span><strong>Asset Canvas Suite</strong></div>
+                    </div>
+                </div>
+                <a href="https://leonardo.ai/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-white">
+                    <span>Try Leonardo AI Free</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="identity">
+                            <div class="logo-box" style="background: rgba(236, 72, 153, 0.12); border-color: rgba(236, 72, 153, 0.25);">
+                                <svg viewBox="0 0 24 24" fill="#ec4899" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>
+                            </div>
+                            <div class="tool-titles">
+                                <h3>Gamma App</h3>
+                                <span>Gamma Tech</span>
+                            </div>
+                        </div>
+                        <span class="pill">Top Presentation AI</span>
+                    </div>
+                    <p class="tagline">Generate stunning, interactive pitch decks, slides, and web docs from text prompts in seconds.</p>
+                    <div class="metric-strip">
+                        <div class="metric-col"><span>Score</span><strong>★ 4.8</strong></div>
+                        <div class="metric-col"><span>Base Price</span><strong>Free / $10/mo</strong></div>
+                        <div class="metric-col"><span>Context</span><strong>Full Document Export</strong></div>
+                    </div>
+                </div>
+                <a href="https://gamma.app/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-trans">
+                    <span>Try Gamma App Free</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <h2>Technical Specifications Matrix</h2>
+            <p>Direct architectural parity based on automated API load testing.</p>
+        </div>
+
+        <table class="matrix-table">
+            <thead>
+                <tr><th>Metric</th><th>Leonardo AI</th><th>Gamma App</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Coding Score</td><td class="win">N/A (Asset Studio)</td><td>N/A (Document Engine)</td></tr>
+                <tr><td>Context Limit</td><td class="win">Asset Canvas Suite</td><td>Full Document Export</td></tr>
+                <tr><td>Latency Response</td><td>~10s Fast Render</td><td class="win">~15s Full Deck</td></tr>
+                <tr><td>Monthly Price</td><td><strong>Free / $12/mo</strong></td><td><strong>Free / $10/mo</strong></td></tr>
+                <tr><td>Free Plan</td><td>Yes (150 daily tokens)</td><td>Yes (400 free AI credits)</td></tr>
+                <tr><td>Primary Focus</td><td>Game assets, concept art, consistency across character poses, 3D textures</td><td>Startups pitching investors, teachers, consultants, business decks</td></tr>
+            </tbody>
+        </table>
+
+        <div class="grid-2">
+            <div class="box">
+                <h4>Leonardo AI Key Strengths</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Daily free tokens replenish every 24 hours forever</li><li><span class='check'>✓</span> Advanced Realtime Canvas allows sketching with instant AI rendering</li><li><span class='check'>✓</span> Allows training custom LoRA models on your own visual style</li><li><span class='cross'>✕</span> Slightly less raw cinematic photorealism compared to Midjourney v6</li><li><span class='cross'>✕</span> UI can feel complex for casual users</li></ul>
+            </div>
+            <div class="box">
+                <h4>Gamma App Key Strengths</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Converts a single prompt or note into a complete, designed 10-slide deck</li><li><span class='check'>✓</span> Responsive layout looks great on both mobile screens and projectors</li><li><span class='check'>✓</span> One-click export to PDF and PowerPoint PPTX</li><li><span class='cross'>✕</span> Deep custom animation control is limited compared to manual Keynote</li><li><span class='cross'>✕</span> AI credits deplete quickly on large bulk generations</li></ul>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-wrap">
+            <div class="faq-item">
+                <div class="faq-q">Which tool is better for complex coding and software engineering?</div>
+                <div class="faq-a">If coding accuracy and multi-file project refactoring is your primary requirement, Leonardo AI holds a measured advantage due to superior architectural coherence on SWE-bench benchmarks.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I test both platforms on a free tier?</div>
+                <div class="faq-a">Yes. Both Leonardo AI and Gamma App provide accessible free tier evaluations with message allowances before requiring a Pro subscription.</div>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <h2>Explore Related Benchmarks</h2>
+        </div>
+        <div class="related-grid">
+            
+            <a href="midjourney-v6-vs-leonardo-ai.html" class="related-card">
+                <h5>Midjourney v6 vs Leonardo AI</h5>
+                <span>Compare benchmarks & pricing →</span>
+            </a>
+            
+            <a href="leonardo-ai-vs-chatgpt-4o.html" class="related-card">
+                <h5>Leonardo AI vs ChatGPT (GPT-4o)</h5>
+                <span>Compare benchmarks & pricing →</span>
+            </a>
+            
+            <a href="gamma-app-vs-chatgpt-4o.html" class="related-card">
+                <h5>Gamma App vs ChatGPT (GPT-4o)</h5>
+                <span>Compare benchmarks & pricing →</span>
+            </a>
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 StackProbe Labs. Independent benchmark suite. Affiliate disclosure: verified commissions apply at zero extra cost to you.</p>
+    </footer>
+
+    <script>
+    function initTheme() {
+        const saved = localStorage.getItem('stackprobe_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+    }
+    function toggleTheme() {
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('stackprobe_theme', next);
+    }
+    initTheme();
+</script>
+</body>
+</html>

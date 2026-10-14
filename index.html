@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackProbe — The Independent AI & Software Benchmark Directory (2026)</title>
+    <meta name="description" content="Explore empirical benchmarks, context limits, pricing, and latency comparisons across foundation models and productivity tools.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+    :root {
+        --bg-base: #060709;
+        --bg-card: rgba(18, 20, 26, 0.75);
+        --bg-card-hover: rgba(24, 27, 36, 0.95);
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --border-focus: rgba(255, 255, 255, 0.25);
+        --text-main: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-dim: #6b7280;
+        --accent-emerald: #10b981;
+        --btn-white-bg: #ffffff;
+        --btn-white-text: #09090b;
+        --btn-trans-bg: rgba(255, 255, 255, 0.06);
+        --btn-trans-text: #ffffff;
+        --table-th-bg: rgba(0, 0, 0, 0.35);
+        --metric-strip-bg: rgba(0, 0, 0, 0.3);
+        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.12), transparent 80%);
+    }
+
+    [data-theme="light"] {
+        --bg-base: #f8fafc;
+        --bg-card: #ffffff;
+        --bg-card-hover: #ffffff;
+        --border-subtle: #e2e8f0;
+        --border-focus: #94a3b8;
+        --text-main: #0f172a;
+        --text-secondary: #475569;
+        --text-dim: #64748b;
+        --accent-emerald: #059669;
+        --btn-white-bg: #0f172a;
+        --btn-white-text: #ffffff;
+        --btn-trans-bg: #f1f5f9;
+        --btn-trans-text: #0f172a;
+        --table-th-bg: #f1f5f9;
+        --metric-strip-bg: #f8fafc;
+        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.06), transparent 80%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; letter-spacing: -0.015em; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+    body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    .ambient-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 420px; background: var(--ambient); pointer-events: none; z-index: 0; }
+
+    .theme-toggle-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-main);
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .theme-toggle-btn:hover { border-color: var(--border-focus); }
+    .icon-sun { display: none; }
+    .icon-moon { display: inline; }
+    [data-theme="light"] .icon-sun { display: inline; }
+    [data-theme="light"] .icon-moon { display: none; }
+
+        .header { border-bottom: 1px solid var(--border-subtle); background: var(--bg-base); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50; }
+        .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 16px; }
+        .brand-gem { width: 22px; height: 22px; background: var(--btn-white-bg); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+        .brand-gem svg { width: 13px; height: 13px; fill: var(--btn-white-text); }
+        .nav-right { display: flex; align-items: center; gap: 18px; }
+
+        .wrapper { max-width: 1100px; margin: 0 auto; padding: 60px 24px 100px; position: relative; z-index: 1; }
+        .hero { text-align: center; max-width: 760px; margin: 0 auto 50px; }
+        .hero h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.15; color: var(--text-main); margin-bottom: 14px; }
+        .hero p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px; }
+
+        .search-box { max-width: 500px; margin: 0 auto 40px; position: relative; }
+        .search-input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px 20px 14px 44px; color: var(--text-main); font-size: 14px; outline: none; transition: border-color 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .search-input:focus { border-color: var(--border-focus); }
+        .search-icon { position: absolute; left: 16px; top: 16px; color: var(--text-dim); }
+
+        .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .catalog-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 14px rgba(0,0,0,0.03); }
+        .catalog-card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .card-pair { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .pair-names { font-size: 17px; font-weight: 600; color: var(--text-main); }
+        .vs-badge { font-size: 11px; font-weight: 700; background: var(--btn-trans-bg); padding: 3px 8px; border-radius: 6px; color: var(--text-dim); }
+        .card-summary { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px; }
+        .card-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim); border-top: 1px solid var(--border-subtle); padding-top: 12px; }
+
+        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); }
+        @media (max-width: 768px) {
+            .catalog-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-gem">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>StackProbe</span>
+            </a>
+            <div class="nav-right">
+                <div style="font-size: 12px; color: var(--text-dim);">Live Directory 2026</div>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">
+                    <span class="icon-moon">🌙 Dark</span>
+                    <span class="icon-sun">☀️ Light</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="hero">
+            <h1>The Empirical AI & Software Benchmark Directory</h1>
+            <p>Independent, technical side-by-side evaluations across foundation models, developer editors, and productivity engines.</p>
+            
+            <div class="search-box">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" class="search-input" id="filterInput" placeholder="Filter benchmarks (e.g. Claude, Cursor, Copilot, Perplexity, Gemini)..." onkeyup="filterCards()">
+            </div>
+        </section>
+
+        <div class="catalog-grid" id="cardGrid">
+            
+        <a href="claude-3-5-sonnet-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Claude 3.5 Sonnet vs ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The industry standard for software engineering, architecture, and long-context reasoning. Compare against ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="claude-3-5-sonnet-vs-google-gemini-1-5-pro.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Claude 3.5 Sonnet vs Google Gemini 1.5 Pro</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The industry standard for software engineering, architecture, and long-context reasoning. Compare against Google Gemini 1.5 Pro.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="chatgpt-4o-vs-google-gemini-1-5-pro.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">ChatGPT (GPT-4o) vs Google Gemini 1.5 Pro</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Versatile multi-modal assistant with integrated web browsing, voice, and DALL-E imaging. Compare against Google Gemini 1.5 Pro.</p>
+            <div class="card-meta">
+                <span>Category: General AI</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="perplexity-ai-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Perplexity AI vs ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Conversational conversational answer engine replacing traditional search with sourced citations. Compare against ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Category: AI Search & Research</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="perplexity-ai-vs-claude-3-5-sonnet.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Perplexity AI vs Claude 3.5 Sonnet</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Conversational conversational answer engine replacing traditional search with sourced citations. Compare against Claude 3.5 Sonnet.</p>
+            <div class="card-meta">
+                <span>Category: AI Search & Research</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="cursor-ai-vs-github-copilot.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Cursor AI vs GitHub Copilot</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The AI-native code editor fork of VS Code built to automate multi-file engineering. Compare against GitHub Copilot.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="claude-3-5-sonnet-vs-cursor-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Claude 3.5 Sonnet vs Cursor AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The industry standard for software engineering, architecture, and long-context reasoning. Compare against Cursor AI.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="chatgpt-4o-vs-cursor-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">ChatGPT (GPT-4o) vs Cursor AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Versatile multi-modal assistant with integrated web browsing, voice, and DALL-E imaging. Compare against Cursor AI.</p>
+            <div class="card-meta">
+                <span>Category: General AI</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="claude-3-5-sonnet-vs-github-copilot.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Claude 3.5 Sonnet vs GitHub Copilot</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The industry standard for software engineering, architecture, and long-context reasoning. Compare against GitHub Copilot.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="cursor-ai-vs-google-gemini-1-5-pro.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Cursor AI vs Google Gemini 1.5 Pro</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The AI-native code editor fork of VS Code built to automate multi-file engineering. Compare against Google Gemini 1.5 Pro.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="midjourney-v6-vs-leonardo-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Midjourney v6 vs Leonardo AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The reigning artistic AI generator for photorealistic imagery, cinematic shots, and art. Compare against Leonardo AI.</p>
+            <div class="card-meta">
+                <span>Category: AI Image & Art</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="midjourney-v6-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Midjourney v6 vs ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The reigning artistic AI generator for photorealistic imagery, cinematic shots, and art. Compare against ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Category: AI Image & Art</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="leonardo-ai-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Leonardo AI vs ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Full-stack generative suite for game developers, marketing visual assets, and fine-tuned models. Compare against ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Category: AI Image & Design</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="gamma-app-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Gamma App vs ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Generate stunning, interactive pitch decks, slides, and web docs from text prompts in seconds. Compare against ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Category: Presentations & Docs</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="notion-ai-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Notion AI vs ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The connected workspace AI that queries your team's entire wiki, notes, and database docs. Compare against ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Category: Productivity & Workspace</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="gamma-app-vs-notion-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Gamma App vs Notion AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Generate stunning, interactive pitch decks, slides, and web docs from text prompts in seconds. Compare against Notion AI.</p>
+            <div class="card-meta">
+                <span>Category: Presentations & Docs</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="claude-3-5-sonnet-vs-notion-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Claude 3.5 Sonnet vs Notion AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The industry standard for software engineering, architecture, and long-context reasoning. Compare against Notion AI.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="elevenlabs-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">ElevenLabs vs ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Hyper-realistic generative AI voice synthesis, voice cloning, and audio localization. Compare against ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Category: AI Voice & Audio</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="elevenlabs-vs-claude-3-5-sonnet.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">ElevenLabs vs Claude 3.5 Sonnet</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Hyper-realistic generative AI voice synthesis, voice cloning, and audio localization. Compare against Claude 3.5 Sonnet.</p>
+            <div class="card-meta">
+                <span>Category: AI Voice & Audio</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="perplexity-ai-vs-google-gemini-1-5-pro.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Perplexity AI vs Google Gemini 1.5 Pro</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Conversational conversational answer engine replacing traditional search with sourced citations. Compare against Google Gemini 1.5 Pro.</p>
+            <div class="card-meta">
+                <span>Category: AI Search & Research</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="cursor-ai-vs-notion-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Cursor AI vs Notion AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The AI-native code editor fork of VS Code built to automate multi-file engineering. Compare against Notion AI.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="midjourney-v6-vs-elevenlabs.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Midjourney v6 vs ElevenLabs</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The reigning artistic AI generator for photorealistic imagery, cinematic shots, and art. Compare against ElevenLabs.</p>
+            <div class="card-meta">
+                <span>Category: AI Image & Art</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="leonardo-ai-vs-gamma-app.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Leonardo AI vs Gamma App</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Full-stack generative suite for game developers, marketing visual assets, and fine-tuned models. Compare against Gamma App.</p>
+            <div class="card-meta">
+                <span>Category: AI Image & Design</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="notion-ai-vs-github-copilot.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Notion AI vs GitHub Copilot</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The connected workspace AI that queries your team's entire wiki, notes, and database docs. Compare against GitHub Copilot.</p>
+            <div class="card-meta">
+                <span>Category: Productivity & Workspace</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="claude-3-5-sonnet-vs-elevenlabs.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Claude 3.5 Sonnet vs ElevenLabs</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The industry standard for software engineering, architecture, and long-context reasoning. Compare against ElevenLabs.</p>
+            <div class="card-meta">
+                <span>Category: AI & Coding</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="chatgpt-4o-vs-leonardo-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">ChatGPT (GPT-4o) vs Leonardo AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Versatile multi-modal assistant with integrated web browsing, voice, and DALL-E imaging. Compare against Leonardo AI.</p>
+            <div class="card-meta">
+                <span>Category: General AI</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="google-gemini-1-5-pro-vs-cursor-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Google Gemini 1.5 Pro vs Cursor AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The record-holding long-context model capable of ingesting 2 million tokens of video and code. Compare against Cursor AI.</p>
+            <div class="card-meta">
+                <span>Category: General AI & Docs</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="perplexity-ai-vs-cursor-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Perplexity AI vs Cursor AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Conversational conversational answer engine replacing traditional search with sourced citations. Compare against Cursor AI.</p>
+            <div class="card-meta">
+                <span>Category: AI Search & Research</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="gamma-app-vs-claude-3-5-sonnet.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Gamma App vs Claude 3.5 Sonnet</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Generate stunning, interactive pitch decks, slides, and web docs from text prompts in seconds. Compare against Claude 3.5 Sonnet.</p>
+            <div class="card-meta">
+                <span>Category: Presentations & Docs</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="midjourney-v6-vs-cursor-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Midjourney v6 vs Cursor AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The reigning artistic AI generator for photorealistic imagery, cinematic shots, and art. Compare against Cursor AI.</p>
+            <div class="card-meta">
+                <span>Category: AI Image & Art</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="notion-ai-vs-google-gemini-1-5-pro.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Notion AI vs Google Gemini 1.5 Pro</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">The connected workspace AI that queries your team's entire wiki, notes, and database docs. Compare against Google Gemini 1.5 Pro.</p>
+            <div class="card-meta">
+                <span>Category: Productivity & Workspace</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="elevenlabs-vs-cursor-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">ElevenLabs vs Cursor AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Hyper-realistic generative AI voice synthesis, voice cloning, and audio localization. Compare against Cursor AI.</p>
+            <div class="card-meta">
+                <span>Category: AI Voice & Audio</span>
+                <span>Verified Q4 2026 →</span>
+            </div>
+        </a>
+        
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 StackProbe Core Labs. Verified software architecture metrics.</p>
+    </footer>
+
+    <script>
+        
+    function initTheme() {
+        const saved = localStorage.getItem('stackprobe_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+    }
+    function toggleTheme() {
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('stackprobe_theme', next);
+    }
+    initTheme();
+
+        function filterCards() {
+            const val = document.getElementById('filterInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.catalog-card');
+            cards.forEach(c => {
+                const text = c.innerText.toLowerCase();
+                c.style.display = text.includes(val) ? 'flex' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
