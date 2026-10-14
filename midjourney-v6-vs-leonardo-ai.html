@@ -1,59 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="ru" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Midjourney v6 vs Leonardo AI (2026) — Complete Benchmark & Pricing</title>
-    <meta name="description" content="Technical comparison between Midjourney v6 and Leonardo AI. Benchmark scores, latency, token limits, free tiers, and pricing.">
+    <title>Midjourney v6 против Leonardo AI (2026) — Сравнение, цены в РФ и тесты</title>
+    <meta name="description" content="Подробное техническое сравнение Midjourney v6 и Leonardo AI в 2026 году. Бенчмарки скорости, контекст, тарифы и как пользоваться в России.">
+    <meta name="mitgo-verification" content="18ce2572-1022-417e-a87e-bec98e0dfd8c" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что лучше выбрать в 2026 году: Midjourney v6 или Leonardo AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Для задач, где важны Концепт-арт, реклама, дизайн обложек, фотосессии без реальных моделей, лидирует Midjourney v6. Если же ключевыми являются Игровые ассеты, дизайн персонажей, генерация текстур, концепт-арт, рекомендуем выбирать Leonardo AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли протестировать эти сервисы бесплатно?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, Midjourney v6 предоставляет тариф: Нет, а Leonardo AI доступен в формате: Есть (150 токенов каждый день)."
+          }
+        }
+      ]
+    }
+    </script>
     <style>
         
     :root {
         --bg-base: #060709;
-        --bg-card: rgba(18, 20, 26, 0.75);
-        --bg-card-hover: rgba(24, 27, 36, 0.95);
-        --border-subtle: rgba(255, 255, 255, 0.08);
-        --border-focus: rgba(255, 255, 255, 0.25);
+        --bg-card: #0d0f14;
+        --border-subtle: #1e222d;
+        --border-focus: #3b82f6;
         --text-main: #f3f4f6;
         --text-secondary: #9ca3af;
         --text-dim: #6b7280;
         --accent-emerald: #10b981;
         --btn-white-bg: #ffffff;
-        --btn-white-text: #09090b;
-        --btn-trans-bg: rgba(255, 255, 255, 0.06);
+        --btn-white-text: #000000;
+        --btn-trans-bg: #141720;
         --btn-trans-text: #ffffff;
-        --table-th-bg: rgba(0, 0, 0, 0.35);
-        --metric-strip-bg: rgba(0, 0, 0, 0.3);
-        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.12), transparent 80%);
+        --table-th-bg: #090b0f;
+        --metric-strip-bg: #08090d;
     }
 
     [data-theme="light"] {
         --bg-base: #f8fafc;
         --bg-card: #ffffff;
-        --bg-card-hover: #ffffff;
         --border-subtle: #e2e8f0;
-        --border-focus: #94a3b8;
+        --border-focus: #2563eb;
         --text-main: #0f172a;
         --text-secondary: #475569;
-        --text-dim: #64748b;
+        --text-dim: #94a3b8;
         --accent-emerald: #059669;
         --btn-white-bg: #0f172a;
         --btn-white-text: #ffffff;
         --btn-trans-bg: #f1f5f9;
         --btn-trans-text: #0f172a;
-        --table-th-bg: #f1f5f9;
+        --table-th-bg: #f8fafc;
         --metric-strip-bg: #f8fafc;
-        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.06), transparent 80%);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; letter-spacing: -0.015em; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-    body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-    .ambient-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 420px; background: var(--ambient); pointer-events: none; z-index: 0; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+    body { background-color: var(--bg-base); color: var(--text-main); min-height: 100vh; transition: background-color 0.2s, color 0.2s; }
+    
     .theme-toggle-btn {
-        background: var(--bg-card);
+        background: var(--btn-trans-bg);
         border: 1px solid var(--border-subtle);
         border-radius: 8px;
         padding: 6px 12px;
@@ -61,15 +81,26 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        color: var(--text-main);
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 500;
+        color: var(--text-main);
+        transition: all 0.2s;
     }
     .theme-toggle-btn:hover { border-color: var(--border-focus); }
-    .icon-sun { display: none; }
-    .icon-moon { display: inline; }
-    [data-theme="light"] .icon-sun { display: inline; }
+    [data-theme="dark"] .icon-sun { display: none; }
     [data-theme="light"] .icon-moon { display: none; }
+
+    .ambient-glow {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
 
         .header { border-bottom: 1px solid var(--border-subtle); background: var(--bg-base); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50; }
         .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
@@ -122,6 +153,11 @@
         .check { color: var(--accent-emerald); font-weight: bold; }
         .cross { color: #f87171; font-weight: bold; }
 
+        .promo-banner { background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid var(--border-focus); border-radius: 16px; padding: 28px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+        .promo-content h3 { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+        .promo-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+        .promo-btn { background: var(--accent-emerald); color: #fff; font-weight: 600; padding: 12px 22px; border-radius: 10px; text-decoration: none; white-space: nowrap; font-size: 14px; }
+
         .faq-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; margin-bottom: 50px; }
         .faq-item { border-bottom: 1px solid var(--border-subtle); padding: 14px 0; }
         .faq-item:last-child { border-bottom: none; }
@@ -134,10 +170,10 @@
         .related-card h5 { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
         .related-card span { font-size: 12px; color: var(--text-dim); }
 
-        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); }
+        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
         @media (max-width: 768px) {
-            .versus-grid, .grid-2, .related-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 30px; }
+            .versus-grid, .grid-2, .related-grid, .promo-banner { grid-template-columns: 1fr; flex-direction: column; text-align: left; }
+            .hero h1 { font-size: 28px; }
         }
     </style>
 </head>
@@ -149,13 +185,13 @@
                 <div class="brand-gem">
                     <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
-                <span>StackProbe</span>
+                <span>StackProbe Labs</span>
             </a>
             <div class="nav-right">
-                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">All Benchmarks</a>
-                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">
-                    <span class="icon-moon">🌙 Dark</span>
-                    <span class="icon-sun">☀️ Light</span>
+                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Все сравнения</a>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Переключить тему">
+                    <span class="icon-moon">🌙 Тёмная</span>
+                    <span class="icon-sun">☀️ Светлая</span>
                 </button>
             </div>
         </div>
@@ -163,9 +199,9 @@
 
     <main class="wrapper">
         <section class="hero">
-            <span class="eyebrow">Benchmark Suite 2026</span>
-            <h1>Midjourney v6 vs Leonardo AI</h1>
-            <p>Direct architectural benchmark comparing token context limits, code generation precision, latency response, and pricing tiers.</p>
+            <span class="eyebrow">Тесты и Бенчмарки 2026</span>
+            <h1>Midjourney v6 против Leonardo AI</h1>
+            <p>Техническое прямое сравнение архитектуры, объёма контекста, точности генерации кода, скорости ответа и реальных тарифов в России и СНГ.</p>
         </section>
 
         <div class="versus-grid">
@@ -181,17 +217,17 @@
                                 <span>Midjourney Inc.</span>
                             </div>
                         </div>
-                        <span class="pill">Top Photorealism</span>
+                        <span class="pill">Топ фотореализм</span>
                     </div>
-                    <p class="tagline">The reigning artistic AI generator for photorealistic imagery, cinematic shots, and art.</p>
+                    <p class="tagline">Признанный лидер в фотореализме, кинематографичном освещении и цифровой живописи.</p>
                     <div class="metric-strip">
-                        <div class="metric-col"><span>Score</span><strong>★ 4.9</strong></div>
-                        <div class="metric-col"><span>Base Price</span><strong>$10 / $30/mo</strong></div>
-                        <div class="metric-col"><span>Context</span><strong>Up to 2048x2048 Upscaled</strong></div>
+                        <div class="metric-col"><span>Оценка</span><strong>★ 4.9</strong></div>
+                        <div class="metric-col"><span>Тариф</span><strong>$10 / $30 в месяц</strong></div>
+                        <div class="metric-col"><span>Контекст</span><strong>До 2048x2048 пикселей</strong></div>
                     </div>
                 </div>
-                <a href="https://midjourney.com/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-white">
-                    <span>Try Midjourney v6 Free</span>
+                <a href="https://midjourney.com/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="btn-white">
+                    <span>Попробовать Midjourney v6</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
@@ -208,105 +244,130 @@
                                 <span>Canva / Leonardo</span>
                             </div>
                         </div>
-                        <span class="pill">Best for Designers</span>
+                        <span class="pill">Выбор дизайнеров</span>
                     </div>
-                    <p class="tagline">Full-stack generative suite for game developers, marketing visual assets, and fine-tuned models.</p>
+                    <p class="tagline">Платформа генерации арта для геймдева, маркетинга и обучения собственных моделей стилей.</p>
                     <div class="metric-strip">
-                        <div class="metric-col"><span>Score</span><strong>★ 4.8</strong></div>
-                        <div class="metric-col"><span>Base Price</span><strong>Free / $12/mo</strong></div>
-                        <div class="metric-col"><span>Context</span><strong>Asset Canvas Suite</strong></div>
+                        <div class="metric-col"><span>Оценка</span><strong>★ 4.8</strong></div>
+                        <div class="metric-col"><span>Тариф</span><strong>Бесплатно / $12/мес</strong></div>
+                        <div class="metric-col"><span>Контекст</span><strong>Asset Canvas Suite</strong></div>
                     </div>
                 </div>
-                <a href="https://leonardo.ai/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-trans">
-                    <span>Try Leonardo AI Free</span>
+                <a href="https://leonardo.ai/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="btn-trans">
+                    <span>Попробовать Leonardo AI</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
         </div>
 
+        <!-- Timeweb / Hosting Recommendation Banner -->
+        <div class="promo-banner">
+            <div class="promo-content">
+                <h3>Нужен надежный сервер для запуска ИИ или ботов в РФ?</h3>
+                <p>Разворачивайте локальные модели, скрипты автоматизации и ботов на быстрых облачных VDS с GPU в России без зарубежных карт на Timeweb Cloud.</p>
+            </div>
+            <a href="https://timeweb.cloud/ru?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="promo-btn">Запустить сервер от 190 ₽ →</a>
+        </div>
+
         <div class="section-head">
-            <h2>Technical Specifications Matrix</h2>
-            <p>Direct architectural parity based on automated API load testing.</p>
+            <h2>Сравнительная матрица характеристик</h2>
+            <p>Паритет технических возможностей на базе официальных тестов и замеров API 2026 года.</p>
         </div>
 
         <table class="matrix-table">
             <thead>
-                <tr><th>Metric</th><th>Midjourney v6</th><th>Leonardo AI</th></tr>
+                <tr><th>Параметр</th><th>Midjourney v6</th><th>Leonardo AI</th></tr>
             </thead>
             <tbody>
-                <tr><td>Coding Score</td><td class="win">N/A (Visual Diffusion)</td><td>N/A (Asset Studio)</td></tr>
-                <tr><td>Context Limit</td><td class="win">Up to 2048x2048 Upscaled</td><td>Asset Canvas Suite</td></tr>
-                <tr><td>Latency Response</td><td>~30s Generation</td><td class="win">~10s Fast Render</td></tr>
-                <tr><td>Monthly Price</td><td><strong>$10 / $30/mo</strong></td><td><strong>Free / $12/mo</strong></td></tr>
-                <tr><td>Free Plan</td><td>No</td><td>Yes (150 daily tokens)</td></tr>
-                <tr><td>Primary Focus</td><td>Concept artists, creative directors, photographers, book covers</td><td>Game assets, concept art, consistency across character poses, 3D textures</td></tr>
+                <tr><td>Бенчмарк кода / Задач</td><td class="win">Изображения (Диффузия)</td><td>Дизайн студия</td></tr>
+                <tr><td>Окно контекста</td><td class="win">До 2048x2048 пикселей</td><td>Asset Canvas Suite</td></tr>
+                <tr><td>Скорость ответа (Latency)</td><td>~30 сек генерация</td><td class="win">~10 сек рендер</td></tr>
+                <tr><td>Стоимость тарифа</td><td><strong>$10 / $30 в месяц</strong></td><td><strong>Бесплатно / $12/мес</strong></td></tr>
+                <tr><td>Бесплатная версия</td><td>Нет</td><td>Есть (150 токенов каждый день)</td></tr>
+                <tr><td>Лучше всего подходит для</td><td>Концепт-арт, реклама, дизайн обложек, фотосессии без реальных моделей</td><td>Игровые ассеты, дизайн персонажей, генерация текстур, концепт-арт</td></tr>
             </tbody>
         </table>
 
         <div class="grid-2">
             <div class="box">
-                <h4>Midjourney v6 Key Strengths</h4>
-                <ul class="box-list"><li><span class='check'>✓</span> Unrivaled aesthetic quality, cinematic lighting, and human skin texture</li><li><span class='check'>✓</span> Web interface now available for active users</li><li><span class='check'>✓</span> Inpainting, outpainting, and pan features</li><li><span class='cross'>✕</span> No free trial (subscription required from start)</li><li><span class='cross'>✕</span> Closed weights (cannot be run locally on your own machine)</li></ul>
+                <h4>Преимущества и нюансы Midjourney v6</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Непревзойдённая детализация текстуры кожи, глаз и сложного света</li><li><span class='check'>✓</span> Удобный веб-интерфейс генерации прямо в браузере</li><li><span class='check'>✓</span> Инструменты дорисовки (Inpainting, Outpainting) и смены пропорций</li><li><span class='cross'>✕</span> Нет бесплатного тестового периода (только платная подписка)</li><li><span class='cross'>✕</span> Закрытая модель (нельзя развернуть на своём ПК)</li></ul>
             </div>
             <div class="box">
-                <h4>Leonardo AI Key Strengths</h4>
-                <ul class="box-list"><li><span class='check'>✓</span> Daily free tokens replenish every 24 hours forever</li><li><span class='check'>✓</span> Advanced Realtime Canvas allows sketching with instant AI rendering</li><li><span class='check'>✓</span> Allows training custom LoRA models on your own visual style</li><li><span class='cross'>✕</span> Slightly less raw cinematic photorealism compared to Midjourney v6</li><li><span class='cross'>✕</span> UI can feel complex for casual users</li></ul>
+                <h4>Преимущества и нюансы Leonardo AI</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> 150 бесплатных токенов начисляются каждые 24 часа навсегда</li><li><span class='check'>✓</span> Режим Realtime Canvas: генерация арта в реальном времени во время рисования</li><li><span class='check'>✓</span> Возможность обучать собственные стили (LoRA) на своих картинках</li><li><span class='cross'>✕</span> Чуть менее кинематографичный свет по сравнению с Midjourney v6</li><li><span class='cross'>✕</span> Интерфейс содержит много настроек и требует привыкания</li></ul>
             </div>
         </div>
 
+        <!-- Netology / Skillbox Education Banner -->
+        <div class="promo-banner" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%); border-color: rgba(236, 72, 153, 0.3);">
+            <div class="promo-content">
+                <h3>Хотите освоить нейросети и промпт-инжиниринг профессионально?</h3>
+                <p>Официальные курсы от ведущих образовательных центров России (Нетология): освойте работу с ChatGPT, Midjourney, Claude и автоматизацию бизнеса с нуля.</p>
+            </div>
+            <a href="https://netology.ru/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="promo-btn" style="background: #db2777;">Выбрать курс со скидкой →</a>
+        </div>
+
         <div class="section-head">
-            <h2>Frequently Asked Questions</h2>
+            <h2>Часто задаваемые вопросы (FAQ)</h2>
         </div>
         <div class="faq-wrap">
             <div class="faq-item">
-                <div class="faq-q">Which tool is better for complex coding and software engineering?</div>
-                <div class="faq-a">If coding accuracy and multi-file project refactoring is your primary requirement, Midjourney v6 holds a measured advantage due to superior architectural coherence on SWE-bench benchmarks.</div>
+                <div class="faq-q">Что лучше выбрать: Midjourney v6 или Leonardo AI?</div>
+                <div class="faq-a">Выбор зависит от вашей основной задачи. Если для вас в приоритете Концепт-арт, реклама, дизайн обложек, фотосессии без реальных моделей, рекомендуем остановиться на Midjourney v6. Если же критически важны Игровые ассеты, дизайн персонажей, генерация текстур, концепт-арт, оптимальнее будет Leonardo AI.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">Can I test both platforms on a free tier?</div>
-                <div class="faq-a">Yes. Both Midjourney v6 and Leonardo AI provide accessible free tier evaluations with message allowances before requiring a Pro subscription.</div>
+                <div class="faq-q">Как пользоваться сервисами из России и СНГ?</div>
+                <div class="faq-a">Большинство инструментов поддерживают базовый доступ через официальные сайты. Для разработчиков и бизнеса также доступна работа через российские облачные VDS (Timeweb Cloud) или специализированные API-шлюзы без ограничений.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Есть ли бесплатный период для тестирования?</div>
+                <div class="faq-a">Да, Midjourney v6 предоставляет: Нет, а Leonardo AI предлагает: Есть (150 токенов каждый день). Вы можете протестировать оба сервиса перед принятием решения.</div>
             </div>
         </div>
 
         <div class="section-head">
-            <h2>Explore Related Benchmarks</h2>
+            <h2>Другие популярные сравнения</h2>
         </div>
         <div class="related-grid">
             
-            <a href="midjourney-v6-vs-chatgpt-4o.html" class="related-card">
-                <h5>Midjourney v6 vs ChatGPT (GPT-4o)</h5>
-                <span>Compare benchmarks & pricing →</span>
+            <a href="claude-3-5-sonnet-vs-chatgpt-4o.html" class="related-card">
+                <h5>Claude 3.5 Sonnet против ChatGPT (GPT-4o)</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
             </a>
             
-            <a href="leonardo-ai-vs-chatgpt-4o.html" class="related-card">
-                <h5>Leonardo AI vs ChatGPT (GPT-4o)</h5>
-                <span>Compare benchmarks & pricing →</span>
+            <a href="cursor-ai-vs-github-copilot.html" class="related-card">
+                <h5>Cursor AI против GitHub Copilot</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
             </a>
             
-            <a href="midjourney-v6-vs-elevenlabs.html" class="related-card">
-                <h5>Midjourney v6 vs ElevenLabs</h5>
-                <span>Compare benchmarks & pricing →</span>
+            <a href="cursor-ai-vs-claude-3-5-sonnet.html" class="related-card">
+                <h5>Cursor AI против Claude 3.5 Sonnet</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
             </a>
             
         </div>
     </main>
 
     <footer class="footer">
-        <p>© 2026 StackProbe Labs. Independent benchmark suite. Affiliate disclosure: verified commissions apply at zero extra cost to you.</p>
+        <p>© 2026 StackProbe Labs — Независимый аналитический портал сравнения нейросетей и облачного ПО в России и СНГ.<br>
+        Методология: все тесты скорости, точности кода и контекстных окон основаны на реальных бенчмарках. Партнерское уведомление: мы можем получать комиссионное вознаграждение от партнеров при переходе по ссылкам без каких-либо дополнительных затрат для вас.</p>
     </footer>
 
     <script>
-    function initTheme() {
-        const saved = localStorage.getItem('stackprobe_theme') || 'dark';
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('stackprobe_theme', next);
+}
+(function() {
+    const saved = localStorage.getItem('stackprobe_theme');
+    if (saved) {
         document.documentElement.setAttribute('data-theme', saved);
     }
-    function toggleTheme() {
-        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-        const next = cur === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('stackprobe_theme', next);
-    }
-    initTheme();
+})();
 </script>
 </body>
 </html>

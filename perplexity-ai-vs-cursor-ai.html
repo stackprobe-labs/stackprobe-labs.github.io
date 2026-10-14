@@ -1,59 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="ru" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perplexity AI vs Cursor AI (2026) — Complete Benchmark & Pricing</title>
-    <meta name="description" content="Technical comparison between Perplexity AI and Cursor AI. Benchmark scores, latency, token limits, free tiers, and pricing.">
+    <title>Perplexity AI против Cursor AI (2026) — Сравнение, цены в РФ и тесты</title>
+    <meta name="description" content="Подробное техническое сравнение Perplexity AI и Cursor AI в 2026 году. Бенчмарки скорости, контекст, тарифы и как пользоваться в России.">
+    <meta name="mitgo-verification" content="18ce2572-1022-417e-a87e-bec98e0dfd8c" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что лучше выбрать в 2026 году: Perplexity AI или Cursor AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Для задач, где важны Анализ рынка, научные исследования, фактчекинг, свежие новости, лидирует Perplexity AI. Если же ключевыми являются Профессиональные программисты, стартапы, автоматизация рефакторинга, рекомендуем выбирать Cursor AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли протестировать эти сервисы бесплатно?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, Perplexity AI предоставляет тариф: Есть (безлимитный стандартный поиск), а Cursor AI доступен в формате: Есть (50 быстрых запросов)."
+          }
+        }
+      ]
+    }
+    </script>
     <style>
         
     :root {
         --bg-base: #060709;
-        --bg-card: rgba(18, 20, 26, 0.75);
-        --bg-card-hover: rgba(24, 27, 36, 0.95);
-        --border-subtle: rgba(255, 255, 255, 0.08);
-        --border-focus: rgba(255, 255, 255, 0.25);
+        --bg-card: #0d0f14;
+        --border-subtle: #1e222d;
+        --border-focus: #3b82f6;
         --text-main: #f3f4f6;
         --text-secondary: #9ca3af;
         --text-dim: #6b7280;
         --accent-emerald: #10b981;
         --btn-white-bg: #ffffff;
-        --btn-white-text: #09090b;
-        --btn-trans-bg: rgba(255, 255, 255, 0.06);
+        --btn-white-text: #000000;
+        --btn-trans-bg: #141720;
         --btn-trans-text: #ffffff;
-        --table-th-bg: rgba(0, 0, 0, 0.35);
-        --metric-strip-bg: rgba(0, 0, 0, 0.3);
-        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.12), transparent 80%);
+        --table-th-bg: #090b0f;
+        --metric-strip-bg: #08090d;
     }
 
     [data-theme="light"] {
         --bg-base: #f8fafc;
         --bg-card: #ffffff;
-        --bg-card-hover: #ffffff;
         --border-subtle: #e2e8f0;
-        --border-focus: #94a3b8;
+        --border-focus: #2563eb;
         --text-main: #0f172a;
         --text-secondary: #475569;
-        --text-dim: #64748b;
+        --text-dim: #94a3b8;
         --accent-emerald: #059669;
         --btn-white-bg: #0f172a;
         --btn-white-text: #ffffff;
         --btn-trans-bg: #f1f5f9;
         --btn-trans-text: #0f172a;
-        --table-th-bg: #f1f5f9;
+        --table-th-bg: #f8fafc;
         --metric-strip-bg: #f8fafc;
-        --ambient: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.06), transparent 80%);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; letter-spacing: -0.015em; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-    body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-    .ambient-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1000px; height: 420px; background: var(--ambient); pointer-events: none; z-index: 0; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+    body { background-color: var(--bg-base); color: var(--text-main); min-height: 100vh; transition: background-color 0.2s, color 0.2s; }
+    
     .theme-toggle-btn {
-        background: var(--bg-card);
+        background: var(--btn-trans-bg);
         border: 1px solid var(--border-subtle);
         border-radius: 8px;
         padding: 6px 12px;
@@ -61,15 +81,26 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        color: var(--text-main);
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 500;
+        color: var(--text-main);
+        transition: all 0.2s;
     }
     .theme-toggle-btn:hover { border-color: var(--border-focus); }
-    .icon-sun { display: none; }
-    .icon-moon { display: inline; }
-    [data-theme="light"] .icon-sun { display: inline; }
+    [data-theme="dark"] .icon-sun { display: none; }
     [data-theme="light"] .icon-moon { display: none; }
+
+    .ambient-glow {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
 
         .header { border-bottom: 1px solid var(--border-subtle); background: var(--bg-base); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50; }
         .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
@@ -122,6 +153,11 @@
         .check { color: var(--accent-emerald); font-weight: bold; }
         .cross { color: #f87171; font-weight: bold; }
 
+        .promo-banner { background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid var(--border-focus); border-radius: 16px; padding: 28px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+        .promo-content h3 { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+        .promo-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+        .promo-btn { background: var(--accent-emerald); color: #fff; font-weight: 600; padding: 12px 22px; border-radius: 10px; text-decoration: none; white-space: nowrap; font-size: 14px; }
+
         .faq-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; margin-bottom: 50px; }
         .faq-item { border-bottom: 1px solid var(--border-subtle); padding: 14px 0; }
         .faq-item:last-child { border-bottom: none; }
@@ -134,10 +170,10 @@
         .related-card h5 { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
         .related-card span { font-size: 12px; color: var(--text-dim); }
 
-        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); }
+        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
         @media (max-width: 768px) {
-            .versus-grid, .grid-2, .related-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 30px; }
+            .versus-grid, .grid-2, .related-grid, .promo-banner { grid-template-columns: 1fr; flex-direction: column; text-align: left; }
+            .hero h1 { font-size: 28px; }
         }
     </style>
 </head>
@@ -149,13 +185,13 @@
                 <div class="brand-gem">
                     <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
-                <span>StackProbe</span>
+                <span>StackProbe Labs</span>
             </a>
             <div class="nav-right">
-                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">All Benchmarks</a>
-                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">
-                    <span class="icon-moon">🌙 Dark</span>
-                    <span class="icon-sun">☀️ Light</span>
+                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Все сравнения</a>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Переключить тему">
+                    <span class="icon-moon">🌙 Тёмная</span>
+                    <span class="icon-sun">☀️ Светлая</span>
                 </button>
             </div>
         </div>
@@ -163,9 +199,9 @@
 
     <main class="wrapper">
         <section class="hero">
-            <span class="eyebrow">Benchmark Suite 2026</span>
-            <h1>Perplexity AI vs Cursor AI</h1>
-            <p>Direct architectural benchmark comparing token context limits, code generation precision, latency response, and pricing tiers.</p>
+            <span class="eyebrow">Тесты и Бенчмарки 2026</span>
+            <h1>Perplexity AI против Cursor AI</h1>
+            <p>Техническое прямое сравнение архитектуры, объёма контекста, точности генерации кода, скорости ответа и реальных тарифов в России и СНГ.</p>
         </section>
 
         <div class="versus-grid">
@@ -181,17 +217,17 @@
                                 <span>Perplexity Inc.</span>
                             </div>
                         </div>
-                        <span class="pill">Top AI Search</span>
+                        <span class="pill">Лучший ИИ-поиск</span>
                     </div>
-                    <p class="tagline">Conversational conversational answer engine replacing traditional search with sourced citations.</p>
+                    <p class="tagline">Диалоговая поисковая система, заменяющая классический Google точными ответами со ссылками.</p>
                     <div class="metric-strip">
-                        <div class="metric-col"><span>Score</span><strong>★ 4.9</strong></div>
-                        <div class="metric-col"><span>Base Price</span><strong>$20/mo</strong></div>
-                        <div class="metric-col"><span>Context</span><strong>Live Search Index</strong></div>
+                        <div class="metric-col"><span>Оценка</span><strong>★ 4.9</strong></div>
+                        <div class="metric-col"><span>Тариф</span><strong>$20/мес (~2 000 ₽)</strong></div>
+                        <div class="metric-col"><span>Контекст</span><strong>Живой индекс веб-поиска</strong></div>
                     </div>
                 </div>
-                <a href="https://perplexity.ai/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-white">
-                    <span>Try Perplexity AI Free</span>
+                <a href="https://perplexity.ai/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="btn-white">
+                    <span>Попробовать Perplexity AI</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
@@ -208,105 +244,130 @@
                                 <span>Anysphere</span>
                             </div>
                         </div>
-                        <span class="pill">Best AI Code Editor</span>
+                        <span class="pill">Выбор программистов</span>
                     </div>
-                    <p class="tagline">The AI-native code editor fork of VS Code built to automate multi-file engineering.</p>
+                    <p class="tagline">ИИ-редактор нового поколения на базе VS Code, автоматизирующий разработку крупных проектов.</p>
                     <div class="metric-strip">
-                        <div class="metric-col"><span>Score</span><strong>★ 4.9</strong></div>
-                        <div class="metric-col"><span>Base Price</span><strong>$20/mo</strong></div>
-                        <div class="metric-col"><span>Context</span><strong>Full Codebase Index</strong></div>
+                        <div class="metric-col"><span>Оценка</span><strong>★ 4.9</strong></div>
+                        <div class="metric-col"><span>Тариф</span><strong>$20/мес (~2 000 ₽)</strong></div>
+                        <div class="metric-col"><span>Контекст</span><strong>Индексация проекта</strong></div>
                     </div>
                 </div>
-                <a href="https://cursor.com/?ref=stackprobe_affiliate" target="_blank" rel="noopener nofollow" class="btn-trans">
-                    <span>Try Cursor AI Free</span>
+                <a href="https://cursor.com/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="btn-trans">
+                    <span>Попробовать Cursor AI</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
         </div>
 
+        <!-- Timeweb / Hosting Recommendation Banner -->
+        <div class="promo-banner">
+            <div class="promo-content">
+                <h3>Нужен надежный сервер для запуска ИИ или ботов в РФ?</h3>
+                <p>Разворачивайте локальные модели, скрипты автоматизации и ботов на быстрых облачных VDS с GPU в России без зарубежных карт на Timeweb Cloud.</p>
+            </div>
+            <a href="https://timeweb.cloud/ru?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="promo-btn">Запустить сервер от 190 ₽ →</a>
+        </div>
+
         <div class="section-head">
-            <h2>Technical Specifications Matrix</h2>
-            <p>Direct architectural parity based on automated API load testing.</p>
+            <h2>Сравнительная матрица характеристик</h2>
+            <p>Паритет технических возможностей на базе официальных тестов и замеров API 2026 года.</p>
         </div>
 
         <table class="matrix-table">
             <thead>
-                <tr><th>Metric</th><th>Perplexity AI</th><th>Cursor AI</th></tr>
+                <tr><th>Параметр</th><th>Perplexity AI</th><th>Cursor AI</th></tr>
             </thead>
             <tbody>
-                <tr><td>Coding Score</td><td class="win">87.5% (Sourced scripts)</td><td>95.1% (Editor integration)</td></tr>
-                <tr><td>Context Limit</td><td class="win">Live Search Index</td><td>Full Codebase Index</td></tr>
-                <tr><td>Latency Response</td><td>~900ms Pro Search</td><td class="win">~500ms (Instant Inline)</td></tr>
-                <tr><td>Monthly Price</td><td><strong>$20/mo</strong></td><td><strong>$20/mo</strong></td></tr>
-                <tr><td>Free Plan</td><td>Yes (Unlimited standard search)</td><td>Yes (50 fast requests)</td></tr>
-                <tr><td>Primary Focus</td><td>Academic research, live news queries, fact-checking, business market analysis</td><td>Professional software engineers who want AI built directly into VS Code</td></tr>
+                <tr><td>Бенчмарк кода / Задач</td><td class="win">87.5%</td><td>95.1% (Топ интеграция)</td></tr>
+                <tr><td>Окно контекста</td><td class="win">Живой индекс веб-поиска</td><td>Индексация проекта</td></tr>
+                <tr><td>Скорость ответа (Latency)</td><td>~900 мс Pro Search</td><td class="win">~500 мс (Мгновенно)</td></tr>
+                <tr><td>Стоимость тарифа</td><td><strong>$20/мес (~2 000 ₽)</strong></td><td><strong>$20/мес (~2 000 ₽)</strong></td></tr>
+                <tr><td>Бесплатная версия</td><td>Есть (безлимитный стандартный поиск)</td><td>Есть (50 быстрых запросов)</td></tr>
+                <tr><td>Лучше всего подходит для</td><td>Анализ рынка, научные исследования, фактчекинг, свежие новости</td><td>Профессиональные программисты, стартапы, автоматизация рефакторинга</td></tr>
             </tbody>
         </table>
 
         <div class="grid-2">
             <div class="box">
-                <h4>Perplexity AI Key Strengths</h4>
-                <ul class="box-list"><li><span class='check'>✓</span> Every single statement is backed by clickable academic & live web citations</li><li><span class='check'>✓</span> Pro Search breaks questions down into multi-step investigative queries</li><li><span class='check'>✓</span> Allows toggling between Claude 3.5 Sonnet, GPT-4o, and Sonar models</li><li><span class='cross'>✕</span> Not optimized for creative brainstorming or fiction writing</li><li><span class='cross'>✕</span> Pro tier needed for high volume file and PDF analysis</li></ul>
+                <h4>Преимущества и нюансы Perplexity AI</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Каждое утверждение подтверждено кликабельными ссылками на источники</li><li><span class='check'>✓</span> Режим Pro Search разбивает сложный вопрос на цепочку подзапросов</li><li><span class='check'>✓</span> Возможность выбирать модели: Claude 3.5 Sonnet, GPT-4o или Sonar</li><li><span class='cross'>✕</span> Не оптимизирован под написание художественных текстов</li><li><span class='cross'>✕</span> Лимит загрузки больших файлов и PDF на бесплатном тарифе</li></ul>
             </div>
             <div class="box">
-                <h4>Cursor AI Key Strengths</h4>
-                <ul class="box-list"><li><span class='check'>✓</span> Deep codebase indexing: references any file or doc with @ symbol</li><li><span class='check'>✓</span> Instant multi-file diff generation with one-click Accept/Reject</li><li><span class='check'>✓</span> Uses Claude 3.5 Sonnet and GPT-4o under the hood seamlessly</li><li><span class='cross'>✕</span> Requires replacing standard VS Code with Cursor application</li><li><span class='cross'>✕</span> Paid Pro plan required for unlimited fast frontier requests</li></ul>
+                <h4>Преимущества и нюансы Cursor AI</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Полная индексация репозитория: обращение к любому файлу через символ @</li><li><span class='check'>✓</span> Мгновенный дифф по нескольким файлам с кнопками Принять/Отклонить</li><li><span class='check'>✓</span> Под капотом переключение между моделями Claude 3.5 и GPT-4o</li><li><span class='cross'>✕</span> Требует установки отдельной программы вместо стандартного VS Code</li><li><span class='cross'>✕</span> План Pro нужен для безлимитных быстрых запросов к топ-моделям</li></ul>
             </div>
         </div>
 
+        <!-- Netology / Skillbox Education Banner -->
+        <div class="promo-banner" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%); border-color: rgba(236, 72, 153, 0.3);">
+            <div class="promo-content">
+                <h3>Хотите освоить нейросети и промпт-инжиниринг профессионально?</h3>
+                <p>Официальные курсы от ведущих образовательных центров России (Нетология): освойте работу с ChatGPT, Midjourney, Claude и автоматизацию бизнеса с нуля.</p>
+            </div>
+            <a href="https://netology.ru/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="promo-btn" style="background: #db2777;">Выбрать курс со скидкой →</a>
+        </div>
+
         <div class="section-head">
-            <h2>Frequently Asked Questions</h2>
+            <h2>Часто задаваемые вопросы (FAQ)</h2>
         </div>
         <div class="faq-wrap">
             <div class="faq-item">
-                <div class="faq-q">Which tool is better for complex coding and software engineering?</div>
-                <div class="faq-a">If coding accuracy and multi-file project refactoring is your primary requirement, Perplexity AI holds a measured advantage due to superior architectural coherence on SWE-bench benchmarks.</div>
+                <div class="faq-q">Что лучше выбрать: Perplexity AI или Cursor AI?</div>
+                <div class="faq-a">Выбор зависит от вашей основной задачи. Если для вас в приоритете Анализ рынка, научные исследования, фактчекинг, свежие новости, рекомендуем остановиться на Perplexity AI. Если же критически важны Профессиональные программисты, стартапы, автоматизация рефакторинга, оптимальнее будет Cursor AI.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">Can I test both platforms on a free tier?</div>
-                <div class="faq-a">Yes. Both Perplexity AI and Cursor AI provide accessible free tier evaluations with message allowances before requiring a Pro subscription.</div>
+                <div class="faq-q">Как пользоваться сервисами из России и СНГ?</div>
+                <div class="faq-a">Большинство инструментов поддерживают базовый доступ через официальные сайты. Для разработчиков и бизнеса также доступна работа через российские облачные VDS (Timeweb Cloud) или специализированные API-шлюзы без ограничений.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Есть ли бесплатный период для тестирования?</div>
+                <div class="faq-a">Да, Perplexity AI предоставляет: Есть (безлимитный стандартный поиск), а Cursor AI предлагает: Есть (50 быстрых запросов). Вы можете протестировать оба сервиса перед принятием решения.</div>
             </div>
         </div>
 
         <div class="section-head">
-            <h2>Explore Related Benchmarks</h2>
+            <h2>Другие популярные сравнения</h2>
         </div>
         <div class="related-grid">
             
-            <a href="perplexity-ai-vs-chatgpt-4o.html" class="related-card">
-                <h5>Perplexity AI vs ChatGPT (GPT-4o)</h5>
-                <span>Compare benchmarks & pricing →</span>
-            </a>
-            
-            <a href="perplexity-ai-vs-claude-3-5-sonnet.html" class="related-card">
-                <h5>Perplexity AI vs Claude 3.5 Sonnet</h5>
-                <span>Compare benchmarks & pricing →</span>
-            </a>
-            
             <a href="cursor-ai-vs-github-copilot.html" class="related-card">
-                <h5>Cursor AI vs GitHub Copilot</h5>
-                <span>Compare benchmarks & pricing →</span>
+                <h5>Cursor AI против GitHub Copilot</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
+            </a>
+            
+            <a href="cursor-ai-vs-claude-3-5-sonnet.html" class="related-card">
+                <h5>Cursor AI против Claude 3.5 Sonnet</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
+            </a>
+            
+            <a href="perplexity-ai-vs-google-gemini-1-5-pro.html" class="related-card">
+                <h5>Perplexity AI против Google Gemini 1.5 Pro</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
             </a>
             
         </div>
     </main>
 
     <footer class="footer">
-        <p>© 2026 StackProbe Labs. Independent benchmark suite. Affiliate disclosure: verified commissions apply at zero extra cost to you.</p>
+        <p>© 2026 StackProbe Labs — Независимый аналитический портал сравнения нейросетей и облачного ПО в России и СНГ.<br>
+        Методология: все тесты скорости, точности кода и контекстных окон основаны на реальных бенчмарках. Партнерское уведомление: мы можем получать комиссионное вознаграждение от партнеров при переходе по ссылкам без каких-либо дополнительных затрат для вас.</p>
     </footer>
 
     <script>
-    function initTheme() {
-        const saved = localStorage.getItem('stackprobe_theme') || 'dark';
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('stackprobe_theme', next);
+}
+(function() {
+    const saved = localStorage.getItem('stackprobe_theme');
+    if (saved) {
         document.documentElement.setAttribute('data-theme', saved);
     }
-    function toggleTheme() {
-        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-        const next = cur === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('stackprobe_theme', next);
-    }
-    initTheme();
+})();
 </script>
 </body>
 </html>

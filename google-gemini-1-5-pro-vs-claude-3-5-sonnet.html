@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Gemini 1.5 Pro против Claude 3.5 Sonnet (2026) — Сравнение, цены в РФ и тесты</title>
+    <meta name="description" content="Подробное техническое сравнение Google Gemini 1.5 Pro и Claude 3.5 Sonnet в 2026 году. Бенчмарки скорости, контекст, тарифы и как пользоваться в России.">
+    <meta name="mitgo-verification" content="18ce2572-1022-417e-a87e-bec98e0dfd8c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что лучше выбрать в 2026 году: Google Gemini 1.5 Pro или Claude 3.5 Sonnet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Для задач, где важны Анализ часовых видеозаписей, обработка 1000-страничных документов, автоматизация Google Docs, лидирует Google Gemini 1.5 Pro. Если же ключевыми являются Разработчики, архитекторы ПО, дата-сайентисты, рефакторинг, рекомендуем выбирать Claude 3.5 Sonnet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли протестировать эти сервисы бесплатно?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, Google Gemini 1.5 Pro предоставляет тариф: Есть (через Google AI Studio), а Claude 3.5 Sonnet доступен в формате: Есть (с лимитом сообщений)."
+          }
+        }
+      ]
+    }
+    </script>
+    <style>
+        
+    :root {
+        --bg-base: #060709;
+        --bg-card: #0d0f14;
+        --border-subtle: #1e222d;
+        --border-focus: #3b82f6;
+        --text-main: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-dim: #6b7280;
+        --accent-emerald: #10b981;
+        --btn-white-bg: #ffffff;
+        --btn-white-text: #000000;
+        --btn-trans-bg: #141720;
+        --btn-trans-text: #ffffff;
+        --table-th-bg: #090b0f;
+        --metric-strip-bg: #08090d;
+    }
+
+    [data-theme="light"] {
+        --bg-base: #f8fafc;
+        --bg-card: #ffffff;
+        --border-subtle: #e2e8f0;
+        --border-focus: #2563eb;
+        --text-main: #0f172a;
+        --text-secondary: #475569;
+        --text-dim: #94a3b8;
+        --accent-emerald: #059669;
+        --btn-white-bg: #0f172a;
+        --btn-white-text: #ffffff;
+        --btn-trans-bg: #f1f5f9;
+        --btn-trans-text: #0f172a;
+        --table-th-bg: #f8fafc;
+        --metric-strip-bg: #f8fafc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+    body { background-color: var(--bg-base); color: var(--text-main); min-height: 100vh; transition: background-color 0.2s, color 0.2s; }
+    
+    .theme-toggle-btn {
+        background: var(--btn-trans-bg);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-main);
+        transition: all 0.2s;
+    }
+    .theme-toggle-btn:hover { border-color: var(--border-focus); }
+    [data-theme="dark"] .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: none; }
+
+    .ambient-glow {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+        .header { border-bottom: 1px solid var(--border-subtle); background: var(--bg-base); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50; }
+        .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 16px; }
+        .brand-gem { width: 22px; height: 22px; background: var(--btn-white-bg); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+        .brand-gem svg { width: 13px; height: 13px; fill: var(--btn-white-text); }
+        .nav-right { display: flex; align-items: center; gap: 18px; }
+
+        .wrapper { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; position: relative; z-index: 1; }
+        .hero { text-align: center; max-width: 800px; margin: 0 auto 50px; }
+        .eyebrow { display: inline-block; padding: 4px 14px; border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; font-weight: 500; }
+        .hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.15; color: var(--text-main); margin-bottom: 14px; }
+        .hero p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+
+        .versus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 50px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+        .identity { display: flex; align-items: center; gap: 12px; }
+        .logo-box { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid; }
+        .tool-titles h3 { font-size: 18px; font-weight: 600; color: var(--text-main); }
+        .tool-titles span { font-size: 12px; color: var(--text-dim); }
+        .pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; text-transform: uppercase; background: var(--btn-trans-bg); border: 1px solid var(--border-subtle); color: var(--text-main); }
+        
+        .tagline { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px; min-height: 40px; }
+        .metric-strip { display: flex; background: var(--metric-strip-bg); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 10px 14px; margin-bottom: 22px; justify-content: space-between; }
+        .metric-col { display: flex; flex-direction: column; }
+        .metric-col span { font-size: 10px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
+        .metric-col strong { font-size: 14px; font-weight: 600; color: var(--text-main); }
+
+        .btn-white { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--btn-white-bg); color: var(--btn-white-text); font-weight: 600; font-size: 13px; padding: 12px 18px; border-radius: 9px; text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .btn-trans { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--btn-trans-bg); color: var(--btn-trans-text); font-weight: 600; font-size: 13px; padding: 12px 18px; border-radius: 9px; text-decoration: none; border: 1px solid var(--border-subtle); }
+
+        .section-head { margin-bottom: 20px; }
+        .section-head h2 { font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+        .section-head p { font-size: 13px; color: var(--text-dim); }
+
+        .matrix-table { width: 100%; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; overflow: hidden; margin-bottom: 50px; border-collapse: collapse; }
+        .matrix-table th { text-align: left; padding: 14px 20px; font-size: 11px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; color: var(--text-dim); background: var(--table-th-bg); border-bottom: 1px solid var(--border-subtle); }
+        .matrix-table td { padding: 16px 20px; font-size: 13px; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
+        .matrix-table tr:last-child td { border-bottom: none; }
+        .matrix-table td:first-child { font-weight: 500; color: var(--text-main); width: 32%; }
+        .matrix-table .win { color: var(--accent-emerald); font-weight: 600; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 50px; }
+        .box { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 24px; }
+        .box h4 { font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 14px; }
+        .box-list { list-style: none; }
+        .box-list li { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
+        .check { color: var(--accent-emerald); font-weight: bold; }
+        .cross { color: #f87171; font-weight: bold; }
+
+        .promo-banner { background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid var(--border-focus); border-radius: 16px; padding: 28px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+        .promo-content h3 { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+        .promo-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+        .promo-btn { background: var(--accent-emerald); color: #fff; font-weight: 600; padding: 12px 22px; border-radius: 10px; text-decoration: none; white-space: nowrap; font-size: 14px; }
+
+        .faq-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; margin-bottom: 50px; }
+        .faq-item { border-bottom: 1px solid var(--border-subtle); padding: 14px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q { font-size: 15px; font-weight: 600; color: var(--text-main); }
+        .faq-a { font-size: 13px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; margin-bottom: 50px; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; text-decoration: none; color: inherit; display: block; }
+        .related-card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .related-card h5 { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+        .related-card span { font-size: 12px; color: var(--text-dim); }
+
+        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+        @media (max-width: 768px) {
+            .versus-grid, .grid-2, .related-grid, .promo-banner { grid-template-columns: 1fr; flex-direction: column; text-align: left; }
+            .hero h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-gem">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>StackProbe Labs</span>
+            </a>
+            <div class="nav-right">
+                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Все сравнения</a>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Переключить тему">
+                    <span class="icon-moon">🌙 Тёмная</span>
+                    <span class="icon-sun">☀️ Светлая</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="hero">
+            <span class="eyebrow">Тесты и Бенчмарки 2026</span>
+            <h1>Google Gemini 1.5 Pro против Claude 3.5 Sonnet</h1>
+            <p>Техническое прямое сравнение архитектуры, объёма контекста, точности генерации кода, скорости ответа и реальных тарифов в России и СНГ.</p>
+        </section>
+
+        <div class="versus-grid">
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="identity">
+                            <div class="logo-box" style="background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.25);">
+                                <svg viewBox="0 0 24 24" fill="#38bdf8" width="22" height="22"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                            </div>
+                            <div class="tool-titles">
+                                <h3>Google Gemini 1.5 Pro</h3>
+                                <span>Google DeepMind</span>
+                            </div>
+                        </div>
+                        <span class="pill">Окно 2М токенов</span>
+                    </div>
+                    <p class="tagline">Рекордное контекстное окно в 2 миллиона токенов: читает часовые видео и целые книги за секунды.</p>
+                    <div class="metric-strip">
+                        <div class="metric-col"><span>Оценка</span><strong>★ 4.8</strong></div>
+                        <div class="metric-col"><span>Тариф</span><strong>$20/мес (~2 000 ₽)</strong></div>
+                        <div class="metric-col"><span>Контекст</span><strong>2 000 000 токенов</strong></div>
+                    </div>
+                </div>
+                <a href="https://gemini.google.com/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="btn-white">
+                    <span>Попробовать Google Gemini 1.5 Pro</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="identity">
+                            <div class="logo-box" style="background: rgba(217, 119, 6, 0.12); border-color: rgba(217, 119, 6, 0.25);">
+                                <svg viewBox="0 0 24 24" fill="#d97706" width="22" height="22"><path d="M13.8 3.5h3.6L24 20.5h-3.6l-1.5-3.6h-5.8l-1.5 3.6H8L13.8 3.5zm3.4 10.8l-1.9-4.7-1.9 4.7h3.8zM4.6 15.6h3.6L4.7 7.2H1.1l3.5 8.4z"/></svg>
+                            </div>
+                            <div class="tool-titles">
+                                <h3>Claude 3.5 Sonnet</h3>
+                                <span>Anthropic</span>
+                            </div>
+                        </div>
+                        <span class="pill">Лидер в кодинге</span>
+                    </div>
+                    <p class="tagline">Мировой эталон в написании сложного кода, системной архитектуре и рассуждениях с большим контекстом.</p>
+                    <div class="metric-strip">
+                        <div class="metric-col"><span>Оценка</span><strong>★ 4.9</strong></div>
+                        <div class="metric-col"><span>Тариф</span><strong>$20/мес (~2 000 ₽)</strong></div>
+                        <div class="metric-col"><span>Контекст</span><strong>200k токенов</strong></div>
+                    </div>
+                </div>
+                <a href="https://claude.ai/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="btn-trans">
+                    <span>Попробовать Claude 3.5 Sonnet</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Timeweb / Hosting Recommendation Banner -->
+        <div class="promo-banner">
+            <div class="promo-content">
+                <h3>Нужен надежный сервер для запуска ИИ или ботов в РФ?</h3>
+                <p>Разворачивайте локальные модели, скрипты автоматизации и ботов на быстрых облачных VDS с GPU в России без зарубежных карт на Timeweb Cloud.</p>
+            </div>
+            <a href="https://timeweb.cloud/ru?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="promo-btn">Запустить сервер от 190 ₽ →</a>
+        </div>
+
+        <div class="section-head">
+            <h2>Сравнительная матрица характеристик</h2>
+            <p>Паритет технических возможностей на базе официальных тестов и замеров API 2026 года.</p>
+        </div>
+
+        <table class="matrix-table">
+            <thead>
+                <tr><th>Параметр</th><th>Google Gemini 1.5 Pro</th><th>Claude 3.5 Sonnet</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Бенчмарк кода / Задач</td><td class="win">91.8%</td><td>93.7% (SWE-bench)</td></tr>
+                <tr><td>Окно контекста</td><td class="win">2 000 000 токенов</td><td>200k токенов</td></tr>
+                <tr><td>Скорость ответа (Latency)</td><td>~850 мс</td><td class="win">~800 мс</td></tr>
+                <tr><td>Стоимость тарифа</td><td><strong>$20/мес (~2 000 ₽)</strong></td><td><strong>$20/мес (~2 000 ₽)</strong></td></tr>
+                <tr><td>Бесплатная версия</td><td>Есть (через Google AI Studio)</td><td>Есть (с лимитом сообщений)</td></tr>
+                <tr><td>Лучше всего подходит для</td><td>Анализ часовых видеозаписей, обработка 1000-страничных документов, автоматизация Google Docs</td><td>Разработчики, архитекторы ПО, дата-сайентисты, рефакторинг</td></tr>
+            </tbody>
+        </table>
+
+        <div class="grid-2">
+            <div class="box">
+                <h4>Преимущества и нюансы Google Gemini 1.5 Pro</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Гигантское окно в 2 миллиона токенов вмещает библиотеку документации</li><li><span class='check'>✓</span> Нативное понимание видео: анализирует ролики покадрово</li><li><span class='check'>✓</span> Тесная интеграция с сервисами Google Docs, Gmail и Google Диск</li><li><span class='cross'>✕</span> При обработке максимального контекста время ответа может увеличиваться</li><li><span class='cross'>✕</span> Строгие цензурные фильтры на некоторые технические темы</li></ul>
+            </div>
+            <div class="box">
+                <h4>Преимущества и нюансы Claude 3.5 Sonnet</h4>
+                <ul class="box-list"><li><span class='check'>✓</span> Превосходное понимание многофайловых репозиториев и чистого кода</li><li><span class='check'>✓</span> Окно интерактивных артефактов для живого просмотра React и HTML</li><li><span class='check'>✓</span> Естественный, живой язык без шаблонных фраз и 'воды'</li><li><span class='cross'>✕</span> Нет встроенной генерации картинок</li><li><span class='cross'>✕</span> Лимиты сообщений снижаются в часы пиковой нагрузки в США</li></ul>
+            </div>
+        </div>
+
+        <!-- Netology / Skillbox Education Banner -->
+        <div class="promo-banner" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%); border-color: rgba(236, 72, 153, 0.3);">
+            <div class="promo-content">
+                <h3>Хотите освоить нейросети и промпт-инжиниринг профессионально?</h3>
+                <p>Официальные курсы от ведущих образовательных центров России (Нетология): освойте работу с ChatGPT, Midjourney, Claude и автоматизацию бизнеса с нуля.</p>
+            </div>
+            <a href="https://netology.ru/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="promo-btn" style="background: #db2777;">Выбрать курс со скидкой →</a>
+        </div>
+
+        <div class="section-head">
+            <h2>Часто задаваемые вопросы (FAQ)</h2>
+        </div>
+        <div class="faq-wrap">
+            <div class="faq-item">
+                <div class="faq-q">Что лучше выбрать: Google Gemini 1.5 Pro или Claude 3.5 Sonnet?</div>
+                <div class="faq-a">Выбор зависит от вашей основной задачи. Если для вас в приоритете Анализ часовых видеозаписей, обработка 1000-страничных документов, автоматизация Google Docs, рекомендуем остановиться на Google Gemini 1.5 Pro. Если же критически важны Разработчики, архитекторы ПО, дата-сайентисты, рефакторинг, оптимальнее будет Claude 3.5 Sonnet.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Как пользоваться сервисами из России и СНГ?</div>
+                <div class="faq-a">Большинство инструментов поддерживают базовый доступ через официальные сайты. Для разработчиков и бизнеса также доступна работа через российские облачные VDS (Timeweb Cloud) или специализированные API-шлюзы без ограничений.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Есть ли бесплатный период для тестирования?</div>
+                <div class="faq-a">Да, Google Gemini 1.5 Pro предоставляет: Есть (через Google AI Studio), а Claude 3.5 Sonnet предлагает: Есть (с лимитом сообщений). Вы можете протестировать оба сервиса перед принятием решения.</div>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <h2>Другие популярные сравнения</h2>
+        </div>
+        <div class="related-grid">
+            
+            <a href="claude-3-5-sonnet-vs-chatgpt-4o.html" class="related-card">
+                <h5>Claude 3.5 Sonnet против ChatGPT (GPT-4o)</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
+            </a>
+            
+            <a href="cursor-ai-vs-claude-3-5-sonnet.html" class="related-card">
+                <h5>Cursor AI против Claude 3.5 Sonnet</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
+            </a>
+            
+            <a href="perplexity-ai-vs-google-gemini-1-5-pro.html" class="related-card">
+                <h5>Perplexity AI против Google Gemini 1.5 Pro</h5>
+                <span>Сравнить характеристики и цены в РФ →</span>
+            </a>
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 StackProbe Labs — Независимый аналитический портал сравнения нейросетей и облачного ПО в России и СНГ.<br>
+        Методология: все тесты скорости, точности кода и контекстных окон основаны на реальных бенчмарках. Партнерское уведомление: мы можем получать комиссионное вознаграждение от партнеров при переходе по ссылкам без каких-либо дополнительных затрат для вас.</p>
+    </footer>
+
+    <script>
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('stackprobe_theme', next);
+}
+(function() {
+    const saved = localStorage.getItem('stackprobe_theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+    }
+})();
+</script>
+</body>
+</html>
