@@ -174,7 +174,8 @@
         .check { color: var(--accent-emerald); font-weight: bold; }
         .cross { color: #f87171; font-weight: bold; }
 
-        .promo-banner { background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid var(--border-focus); border-radius: 16px; padding: 28px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-sizing: border-box; }
+        .promo-banner { position: relative; background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid var(--border-focus); border-radius: 16px; padding: 28px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-sizing: border-box; }
+        .ad-tag { position: absolute; top: 10px; right: 14px; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-dim); opacity: 0.55; user-select: none; pointer-events: none; font-weight: 500; }
         .promo-content h3 { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
         .promo-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
         .promo-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
@@ -207,11 +208,14 @@
             .metric-col:last-child { border-bottom: none; padding-bottom: 0; }
             .metric-col span { font-size: 11px; }
             .metric-col strong { font-size: 13px; text-align: right; word-break: break-word; }
-            .promo-banner { padding: 18px 14px; gap: 14px; }
+            .promo-banner { padding: 26px 14px 18px; gap: 14px; }
+            .ad-tag { top: 8px; right: 12px; font-size: 9px; }
             .promo-actions { width: 100%; display: flex; flex-direction: column; gap: 10px; }
             .promo-btn, .promo-btn-alt { width: 100%; text-align: center; white-space: normal; box-sizing: border-box; }
             .header-inner { padding: 10px 14px; }
-            .header-inner .nav-right a { display: none; }
+            .header-inner .nav-right { gap: 10px; }
+            .header-inner .nav-right .nav-hide-mobile { display: none; }
+            .header-inner .nav-right a { font-size: 12px; }
             .box { padding: 18px 14px; }
             .faq-wrap { padding: 18px 14px; }
             .table-wrap { margin-bottom: 30px; }
@@ -230,7 +234,8 @@
                 <span>StackProbe Labs</span>
             </a>
             <div class="nav-right">
-                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Все сравнения</a>
+                <a href="index.html" class="nav-hide-mobile" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Все сравнения</a>
+                <a href="about.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">О лаборатории</a>
                 <button class="theme-toggle-btn" onclick="toggleTheme()" title="Переключить тему">
                     <span class="icon-moon">🌙 Тёмная</span>
                     <span class="icon-sun">☀️ Светлая</span>
@@ -304,6 +309,7 @@
 
         <!-- Sprinthost & AdminVPS Recommendation Banner -->
         <div class="promo-banner">
+            <span class="ad-tag">Реклама</span>
             <div class="promo-content">
                 <h3>Нужен надежный хостинг или быстрый VDS-сервер в РФ?</h3>
                 <p>Разворачивайте сайты, скрипты автоматизации и Telegram-ботов на скоростных NVMe серверах в РФ и Европе с аптаймом 99.9% и защитой от DDoS.</p>
@@ -349,6 +355,7 @@
 
         <!-- ProductStar & VseSdal Education Banner -->
         <div class="promo-banner" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%); border-color: rgba(99, 102, 241, 0.3);">
+            <span class="ad-tag">Реклама</span>
             <div class="promo-content">
                 <h3>Обучение нейросетям или помощь с IT-задачами</h3>
                 <p>Осваивайте профессии будущего на курсах ProductStar (группа РБК) или получайте быструю помощь экспертов с написанием кода, дипломами и проектами на «Всё Сдал!».</p>
@@ -402,6 +409,7 @@
 
     <footer class="footer">
         <p>© 2026 StackProbe Labs — Независимый аналитический портал сравнения нейросетей и облачного ПО в России и СНГ.<br>
+        <a href="about.html" style="color: var(--border-focus); text-decoration: none; font-weight: 500;">Методология исследований и экспертная редакция (E-E-A-T)</a> · <a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Каталог сравнений</a><br>
         Методология: все тесты скорости, точности кода и контекстных окон основаны на реальных бенчмарках. Партнерское уведомление: мы можем получать комиссионное вознаграждение от партнеров при переходе по ссылкам без каких-либо дополнительных затрат для вас.</p>
     </footer>
 

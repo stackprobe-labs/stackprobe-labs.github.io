@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О лаборатории StackProbe Labs — Методология тестов и экспертная команда (2026)</title>
+    <meta name="description" content="Независимая лаборатория исследований ИИ и облачных решений StackProbe Labs: стандарты E-E-A-T, замеры задержки API, точность кода SWE-bench, аудит тарифов в РФ и состав экспертной группы.">
+    <meta name="mitgo-verification" content="18ce2572-1022-417e-a87e-bec98e0dfd8c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "О независимой исследовательской лаборатории StackProbe Labs",
+      "description": "Методология эмпирического тестирования нейросетей, языковых моделей и облачных серверов в России и СНГ.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "StackProbe Labs",
+        "url": "https://stackprobe-labs.github.io/",
+        "sameAs": [
+          "https://github.com/stackprobe-labs"
+        ],
+        "publishingPrinciples": "https://stackprobe-labs.github.io/about.html"
+      }
+    }
+    </script>
+    <style>
+        
+    :root {
+        --bg-base: #060709;
+        --bg-card: #0d0f14;
+        --border-subtle: #1e222d;
+        --border-focus: #3b82f6;
+        --text-main: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-dim: #6b7280;
+        --accent-emerald: #10b981;
+        --btn-white-bg: #ffffff;
+        --btn-white-text: #000000;
+        --btn-trans-bg: #141720;
+        --btn-trans-text: #ffffff;
+        --table-th-bg: #090b0f;
+        --metric-strip-bg: #08090d;
+    }
+
+    [data-theme="light"] {
+        --bg-base: #f8fafc;
+        --bg-card: #ffffff;
+        --border-subtle: #e2e8f0;
+        --border-focus: #2563eb;
+        --text-main: #0f172a;
+        --text-secondary: #475569;
+        --text-dim: #94a3b8;
+        --accent-emerald: #059669;
+        --btn-white-bg: #0f172a;
+        --btn-white-text: #ffffff;
+        --btn-trans-bg: #f1f5f9;
+        --btn-trans-text: #0f172a;
+        --table-th-bg: #f8fafc;
+        --metric-strip-bg: #f8fafc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+        -webkit-text-size-adjust: 100%;
+    }
+    @supports (overflow-x: clip) {
+        html, body {
+            overflow-x: clip;
+        }
+    }
+    body {
+        background-color: var(--bg-base);
+        color: var(--text-main);
+        min-height: 100vh;
+        transition: background-color 0.2s, color 0.2s;
+    }
+    
+    .theme-toggle-btn {
+        background: var(--btn-trans-bg);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-main);
+        transition: all 0.2s;
+    }
+    .theme-toggle-btn:hover { border-color: var(--border-focus); }
+    [data-theme="dark"] .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: none; }
+
+    .ambient-glow {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(700px, 100vw);
+        max-width: 100%;
+        height: 350px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 70%);
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+        .header { border-bottom: 1px solid var(--border-subtle); background: var(--bg-base); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 50; }
+        .header-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 16px; }
+        .brand-gem { width: 22px; height: 22px; background: var(--btn-white-bg); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+        .brand-gem svg { width: 13px; height: 13px; fill: var(--btn-white-text); }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.15s; }
+        .nav-link:hover { color: var(--text-main); }
+
+        .wrapper { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; position: relative; z-index: 1; }
+        .hero { text-align: center; max-width: 760px; margin: 0 auto 50px; }
+        .eyebrow { display: inline-block; padding: 4px 14px; border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; font-weight: 500; }
+        .hero h1 { font-size: 38px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.2; color: var(--text-main); margin-bottom: 16px; }
+        .hero p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+
+        .section-block { margin-bottom: 50px; }
+        .section-block h2 { font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; letter-spacing: -0.02em; }
+        .section-block p.lead { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.6; }
+
+        .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 24px; }
+        .pillar-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 22px; box-sizing: border-box; }
+        .pillar-card h3 { font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .pillar-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+        .method-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+        .method-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 22px; box-sizing: border-box; }
+        .method-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .method-badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: rgba(59, 130, 246, 0.12); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.25); }
+        .method-title { font-size: 16px; font-weight: 600; color: var(--text-main); }
+        .method-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px; }
+        .team-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; box-sizing: border-box; }
+        .team-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+        .team-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0; }
+        .team-info h4 { font-size: 16px; font-weight: 600; color: var(--text-main); }
+        .team-info span { font-size: 12px; color: var(--text-dim); display: block; }
+        .team-bio { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 12px; }
+        .team-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .team-tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--btn-trans-bg); border: 1px solid var(--border-subtle); color: var(--text-secondary); }
+
+        .sources-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 24px; }
+        .source-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; text-decoration: none; color: inherit; display: block; transition: all 0.2s; }
+        .source-card:hover { border-color: var(--border-focus); transform: translateY(-2px); }
+        .source-card h5 { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; }
+        .source-card span { font-size: 12px; color: var(--text-dim); line-height: 1.4; display: block; }
+
+        .disclosure-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(59, 130, 246, 0.06) 100%); border: 1px solid var(--border-focus); border-radius: 16px; padding: 26px; box-sizing: border-box; margin-bottom: 40px; }
+        .disclosure-card h3 { font-size: 16px; font-weight: 600; color: var(--text-main); margin-bottom: 10px; }
+        .disclosure-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .disclosure-card p:last-child { margin-bottom: 0; }
+
+        .cta-box { text-align: center; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 36px 24px; }
+        .cta-box h3 { font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+        .cta-box p { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--btn-white-bg); color: var(--btn-white-text); font-weight: 600; font-size: 13px; padding: 12px 24px; border-radius: 10px; text-decoration: none; }
+
+        .footer { border-top: 1px solid var(--border-subtle); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--text-dim); line-height: 1.7; box-sizing: border-box; }
+
+        @media (max-width: 768px) {
+            .wrapper { padding: 24px 14px 60px; width: 100%; max-width: 100%; overflow-x: hidden; }
+            .hero h1 { font-size: 26px; line-height: 1.25; word-break: break-word; }
+            .pillars-grid, .team-grid, .sources-grid { grid-template-columns: 1fr; }
+            .header-inner { padding: 10px 14px; }
+            .header-inner .nav-right { gap: 10px; }
+            .header-inner .nav-right a.nav-link { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-gem">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>StackProbe Labs</span>
+            </a>
+            <div class="nav-right">
+                <a href="index.html" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Каталог сравнений</a>
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Переключить тему">
+                    <span class="icon-moon">🌙 Тёмная</span>
+                    <span class="icon-sun">☀️ Светлая</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="hero">
+            <span class="eyebrow">Стандарты качества Google E-E-A-T 2026</span>
+            <h1>Лаборатория исследований ИИ и облачных систем StackProbe Labs</h1>
+            <p>Независимый аналитический ресурс. Мы проводим технические стресс-тесты больших языковых моделей, ассистентов для программирования и серверов VDS в РФ, опираясь на воспроизводимые метрики и открытую методологию.</p>
+        </section>
+
+        <section class="section-block">
+            <h2>Принципы аналитической независимости</h2>
+            <p class="lead">Цель StackProbe Labs — дать разработчикам, системным архитекторам и бизнесу в России и СНГ объективные технические ориентиры без рекламных манипуляций.</p>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>🎯 Воспроизводимость</h3>
+                    <p>Никаких абстрактных мнений. Все тесты задержки, скорости отклика (TTFT) и качества генерации кода фиксируются в тестовых протоколах и могут быть проверены повторно.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>⚖️ Бескомпромиссность</h3>
+                    <p>Мы прямо указываем на критические недостатки сервисов: лимиты контекста, блокировки способов оплаты из РФ, необходимость зарубежных симок или дорогую поддержку.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>🛡️ Прозрачность по 38-ФЗ</h3>
+                    <p>Партнерские ссылки открыто маркируются в соответствии с законодательством РФ и правилами ОРД (токены erid). Рекламные соглашения не влияют на технические баллы.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <h2>Методология технического тестирования</h2>
+            <p class="lead">Каждая нейросеть и облачный провайдер в нашем каталоге проходят через стандартизированный 4-этапный аудит:</p>
+
+            <div class="method-list">
+                <div class="method-item">
+                    <div class="method-head">
+                        <span class="method-badge">ЭТАП 1</span>
+                        <div class="method-title">Бенчмарк кодогенерации и решения реальных задач (SWE-bench)</div>
+                    </div>
+                    <div class="method-desc">
+                        Оценка качества программирования на базе открытого бенчмарка SWE-bench (Software Engineering Benchmark). Мы тестируем способность нейросети вносить точные исправления в многофайловые GitHub-репозитории, понимать зависимости и проходить тесты pytest/jest без синтаксических ошибок и ложных галлюцинаций.
+                    </div>
+                </div>
+
+                <div class="method-item">
+                    <div class="method-head">
+                        <span class="method-badge">ЭТАП 2</span>
+                        <div class="method-title">Замеры задержки ответа и времени первого токена (Latency & TTFT)</div>
+                    </div>
+                    <div class="method-desc">
+                        Прямые замеры времени отклика API из сетевых узлов в Москве, Санкт-Петербурге и Франкфурте. Фиксация показателя TTFT (Time To First Token) и пропускной способности генерации (токенов в секунду) при пиковых нагрузках в дневные и вечерние часы.
+                    </div>
+                </div>
+
+                <div class="method-item">
+                    <div class="method-head">
+                        <span class="method-badge">ЭТАП 3</span>
+                        <div class="method-title">Стресс-тестирование глубины контекстного окна (Needle In A Haystack)</div>
+                    </div>
+                    <div class="method-desc">
+                        Проверка сохранения внимания моделей на дистанциях от 32k до 200k токенов. Мы помещаем ключевые архитектурные директивы в начало, середину и конец массивных технических логов и замеряем точность их извлечения без потери критических деталей.
+                    </div>
+                </div>
+
+                <div class="method-item">
+                    <div class="method-head">
+                        <span class="method-badge">ЭТАП 4</span>
+                        <div class="method-title">Инфраструктурный аудит и доступность в РФ / СНГ</div>
+                    </div>
+                    <div class="method-desc">
+                        Проверка реальной доступности инструментов: наличие серверов с аптаймом 99.9% (Спринтхост, AdminVPS), поддержка оплаты картами МИР, СБП и безналичного расчета для юридических лиц, а также скорость русскоязычной службы поддержки.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <h2>Экспертная коллегия лаборатории (E-E-A-T)</h2>
+            <p class="lead">Материалы и сравнительные тесты готовятся профильными специалистами с подтвержденным инженерным опытом:</p>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-top">
+                        <div class="team-avatar">АС</div>
+                        <div class="team-info">
+                            <h4>Александр Серов</h4>
+                            <span>Ведущий системный архитектор & AI Researcher</span>
+                        </div>
+                    </div>
+                    <p class="team-bio">Более 9 лет в разработке высоконагруженных распределенных сервисов и тестировании нейросетевых архитектур. Специализируется на агентах автономного кода, интеграциях LLM API и оптимизации RAG-систем.</p>
+                    <div class="team-tags">
+                        <span class="team-tag">LLM Architecture</span>
+                        <span class="team-tag">SWE-bench</span>
+                        <span class="team-tag">Python & Go</span>
+                        <span class="team-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-top">
+                        <div class="team-avatar" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);">ЕВ</div>
+                        <div class="team-info">
+                            <h4>Елена Воронова</h4>
+                            <span>Senior Benchmark Engineer & QA Lead</span>
+                        </div>
+                    </div>
+                    <p class="team-bio">7 лет практического опыта в нагрузочном тестировании облачной инфраструктуры, замере сетевых задержек (Latency P95) и оценке отказоустойчивости NVMe-серверов хостинг-провайдеров в РФ и Европе.</p>
+                    <div class="team-tags">
+                        <span class="team-tag">Latency P95</span>
+                        <span class="team-tag">VDS Stress Tests</span>
+                        <span class="team-tag">API Benchmarks</span>
+                        <span class="team-tag">Cloud DevOps</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <h2>Авторитетные первоисточники и стандарты</h2>
+            <p class="lead">В наших исследованиях мы опираемся на открытые академические стандарты и официальные данные вендоров:</p>
+
+            <div class="sources-grid">
+                <a href="https://www.swebench.com/" target="_blank" rel="noopener nofollow" class="source-card">
+                    <h5>SWE-bench Official <span>↗</span></h5>
+                    <span>Международный эталонный датасет проверки моделей на реальных задачах разработки ПО (Princeton University).</span>
+                </a>
+                <a href="https://chat.lmsys.org/" target="_blank" rel="noopener nofollow" class="source-card">
+                    <h5>LMSYS Chatbot Arena <span>↗</span></h5>
+                    <span>Слепой краудсорсинговый бенчмарк оценки больших языковых моделей на базе рейтинга Elo (UC Berkeley).</span>
+                </a>
+                <a href="https://openai.com/research/" target="_blank" rel="noopener nofollow" class="source-card">
+                    <h5>OpenAI Technical Reports <span>↗</span></h5>
+                    <span>Официальные технические спецификации, системные карты и замеры точности моделей семейства GPT-4o.</span>
+                </a>
+                <a href="https://www.anthropic.com/research" target="_blank" rel="noopener nofollow" class="source-card">
+                    <h5>Anthropic Research <span>↗</span></h5>
+                    <span>Публикации о безопасности, системном промптинге и архитектуре рассуждений Claude 3.5 Sonnet.</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="disclosure-card">
+            <h3>Политика финансирования и партнерской прозрачности</h3>
+            <p>StackProbe Labs предоставляет все аналитические материалы, матрицы характеристик и таблицы абсолютно бесплатно — без платных подписок и пейволлов (Paywall).</p>
+            <p>Проект финансируется за счет партнерских комиссий от проверенных сервисов (хостинг-провайдеры Спринтхост, AdminVPS, образовательные программы ProductStar группы РБК и «Всё Сдал!»). При переходе по ссылкам вы не несете дополнительных расходов, а часто получаете специальные условия или тестовые периоды. При этом финансовые соглашения ни при каких обстоятельствах не влияют на технические баллы и честность выявления недостатков.</p>
+        </div>
+
+        <div class="cta-box">
+            <h3>Готовы выбрать оптимальный инструмент?</h3>
+            <p>Изучите прямое попарное сопоставление нейросетей, редакторов кода и VDS-серверов в нашем интерактивном каталоге 2026 года.</p>
+            <a href="index.html" class="cta-btn">
+                <span>Перейти в каталог сравнений</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 StackProbe Labs — Независимый аналитический портал сравнения нейросетей и облачного ПО в России и СНГ.<br>
+        <a href="index.html" style="color: var(--border-focus); text-decoration: none; font-weight: 500;">Каталог 26 сравнений</a> · <a href="about.html" style="color: var(--text-secondary); text-decoration: none;">Методология исследований (E-E-A-T)</a><br>
+        Все тесты проводятся на открытых бенчмарках. Мы соблюдаем закон о рекламе № 38-ФЗ (маркировка ОРД с erid).</p>
+    </footer>
+
+    <script>
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('stackprobe_theme', next);
+}
+(function() {
+    const saved = localStorage.getItem('stackprobe_theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+    }
+})();
+</script>
+</body>
+</html>

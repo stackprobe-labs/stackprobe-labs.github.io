@@ -136,7 +136,9 @@
             .hero p { font-size: 14px; margin-bottom: 24px; }
             .search-box { width: 100%; max-width: 100%; margin-bottom: 28px; }
             .header-inner { padding: 10px 14px; }
+            .header-inner .nav-right { gap: 10px; }
             .header-inner .nav-right div { display: none; }
+            .header-inner .nav-right a { font-size: 12px; }
             .catalog-card { padding: 18px 14px; }
             .feature-box { padding: 16px 14px; }
         }
@@ -153,7 +155,7 @@
                 <span>StackProbe Labs</span>
             </a>
             <div class="nav-right">
-                <div style="font-size: 12px; color: var(--text-dim);">Каталог 2026 (СНГ)</div>
+                <a href="about.html" style="color: var(--text-secondary); text-decoration: none; font-size: 13px; font-weight: 500;">О лаборатории</a>
                 <button class="theme-toggle-btn" onclick="toggleTheme()" title="Переключить тему">
                     <span class="icon-moon">🌙 Тёмная</span>
                     <span class="icon-sun">☀️ Светлая</span>
@@ -506,7 +508,8 @@
     </main>
 
     <footer class="footer">
-        <p>© 2026 StackProbe Labs — Независимый портал оценки программных систем и нейросетей.<br>
+        <p>© 2026 StackProbe Labs — Независимый аналитический портал сравнения нейросетей и облачного ПО в России и СНГ.<br>
+        <a href="about.html" style="color: var(--border-focus); text-decoration: none; font-weight: 500;">Методология исследований и экспертная редакция (E-E-A-T)</a><br>
         Данные обновляются ежеквартально на основе тестов точности и пользовательского опыта в СНГ.</p>
     </footer>
 
