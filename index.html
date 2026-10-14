@@ -169,7 +169,7 @@
             
             <div class="search-box">
                 <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                <input type="text" class="search-input" id="filterInput" placeholder="Быстрый поиск нейросетей (Claude, ChatGPT, Cursor, Спринтхост, Midjourney)..." onkeyup="filterCards()">
+                <input type="text" class="search-input" id="filterInput" placeholder="Быстрый поиск (Claude, ChatGPT, Cursor, Спринтхост, AdminVPS)..." onkeyup="filterCards()">
             </div>
         </section>
 
@@ -183,13 +183,25 @@
                 <p>Актуальные данные о бесплатных тарифах, стоимости подписок и способах оплаты в СНГ.</p>
             </div>
             <div class="feature-box">
-                <h4>🎓 Курсы и Инфраструктура</h4>
-                <p>Рекомендации проверенных программ обучения и надежного хостинга Спринтхост.</p>
+                <h4>🎓 Курсы и Серверы</h4>
+                <p>Рекомендации программ обучения, хостинга Спринтхост и VDS-серверов AdminVPS.</p>
             </div>
         </div>
 
         <div class="catalog-grid" id="cardGrid">
             
+        <a href="sprinthost-vs-adminvps.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Спринтхост (Sprinthost) против AdminVPS</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с AdminVPS.</p>
+            <div class="card-meta">
+                <span>Категория: Хостинг и VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
         <a href="claude-3-5-sonnet-vs-chatgpt-4o.html" class="catalog-card">
             <div class="card-pair">
                 <span class="pair-names">Claude 3.5 Sonnet против ChatGPT (GPT-4o)</span>
@@ -262,7 +274,7 @@
             </div>
         </a>
         
-        <a href="timeweb-cloud-vs-github-copilot.html" class="catalog-card">
+        <a href="sprinthost-vs-github-copilot.html" class="catalog-card">
             <div class="card-pair">
                 <span class="pair-names">Спринтхост (Sprinthost) против GitHub Copilot</span>
                 <span class="vs-badge">VS</span>
@@ -270,6 +282,18 @@
             <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с GitHub Copilot.</p>
             <div class="card-meta">
                 <span>Категория: Хостинг и VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="adminvps-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">AdminVPS против ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Премиальный хостинг и мощные NVMe VDS серверы по системе 'Все включено': бесплатное администрирование и защита от DDoS. Сравнение с ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Категория: VPS & VDS Серверы</span>
                 <span>Тесты 2026 →</span>
             </div>
         </a>
@@ -300,17 +324,17 @@
         
         <a href="netology-ai-vs-cursor-ai.html" class="catalog-card">
             <div class="card-pair">
-                <span class="pair-names">Нетология (ИИ Курсы) против Cursor AI</span>
+                <span class="pair-names">ProductStar (РБК IT-Курсы) против Cursor AI</span>
                 <span class="vs-badge">VS</span>
             </div>
-            <p class="card-summary">Лидер онлайн-образования в России: сертифицированные программы по нейросетям, промптингу и анализу данных. Сравнение с Cursor AI.</p>
+            <p class="card-summary">Лидер практического IT-образования в РФ: курсы по нейросетям, промптингу, Data Science и Python с дипломом и помощью в трудоустройстве. Сравнение с Cursor AI.</p>
             <div class="card-meta">
                 <span>Категория: Обучение и Карьера</span>
                 <span>Тесты 2026 →</span>
             </div>
         </a>
         
-        <a href="timeweb-cloud-vs-cursor-ai.html" class="catalog-card">
+        <a href="sprinthost-vs-cursor-ai.html" class="catalog-card">
             <div class="card-pair">
                 <span class="pair-names">Спринтхост (Sprinthost) против Cursor AI</span>
                 <span class="vs-badge">VS</span>
@@ -322,19 +346,31 @@
             </div>
         </a>
         
-        <a href="netology-ai-vs-claude-3-5-sonnet.html" class="catalog-card">
+        <a href="adminvps-vs-cursor-ai.html" class="catalog-card">
             <div class="card-pair">
-                <span class="pair-names">Нетология (ИИ Курсы) против Claude 3.5 Sonnet</span>
+                <span class="pair-names">AdminVPS против Cursor AI</span>
                 <span class="vs-badge">VS</span>
             </div>
-            <p class="card-summary">Лидер онлайн-образования в России: сертифицированные программы по нейросетям, промптингу и анализу данных. Сравнение с Claude 3.5 Sonnet.</p>
+            <p class="card-summary">Премиальный хостинг и мощные NVMe VDS серверы по системе 'Все включено': бесплатное администрирование и защита от DDoS. Сравнение с Cursor AI.</p>
+            <div class="card-meta">
+                <span>Категория: VPS & VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="netology-ai-vs-claude-3-5-sonnet.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">ProductStar (РБК IT-Курсы) против Claude 3.5 Sonnet</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Лидер практического IT-образования в РФ: курсы по нейросетям, промптингу, Data Science и Python с дипломом и помощью в трудоустройстве. Сравнение с Claude 3.5 Sonnet.</p>
             <div class="card-meta">
                 <span>Категория: Обучение и Карьера</span>
                 <span>Тесты 2026 →</span>
             </div>
         </a>
         
-        <a href="timeweb-cloud-vs-chatgpt-4o.html" class="catalog-card">
+        <a href="sprinthost-vs-chatgpt-4o.html" class="catalog-card">
             <div class="card-pair">
                 <span class="pair-names">Спринтхост (Sprinthost) против ChatGPT (GPT-4o)</span>
                 <span class="vs-badge">VS</span>
@@ -348,10 +384,10 @@
         
         <a href="netology-ai-vs-chatgpt-4o.html" class="catalog-card">
             <div class="card-pair">
-                <span class="pair-names">Нетология (ИИ Курсы) против ChatGPT (GPT-4o)</span>
+                <span class="pair-names">ProductStar (РБК IT-Курсы) против ChatGPT (GPT-4o)</span>
                 <span class="vs-badge">VS</span>
             </div>
-            <p class="card-summary">Лидер онлайн-образования в России: сертифицированные программы по нейросетям, промптингу и анализу данных. Сравнение с ChatGPT (GPT-4o).</p>
+            <p class="card-summary">Лидер практического IT-образования в РФ: курсы по нейросетям, промптингу, Data Science и Python с дипломом и помощью в трудоустройстве. Сравнение с ChatGPT (GPT-4o).</p>
             <div class="card-meta">
                 <span>Категория: Обучение и Карьера</span>
                 <span>Тесты 2026 →</span>
@@ -372,10 +408,10 @@
         
         <a href="netology-ai-vs-perplexity-ai.html" class="catalog-card">
             <div class="card-pair">
-                <span class="pair-names">Нетология (ИИ Курсы) против Perplexity AI</span>
+                <span class="pair-names">ProductStar (РБК IT-Курсы) против Perplexity AI</span>
                 <span class="vs-badge">VS</span>
             </div>
-            <p class="card-summary">Лидер онлайн-образования в России: сертифицированные программы по нейросетям, промптингу и анализу данных. Сравнение с Perplexity AI.</p>
+            <p class="card-summary">Лидер практического IT-образования в РФ: курсы по нейросетям, промптингу, Data Science и Python с дипломом и помощью в трудоустройстве. Сравнение с Perplexity AI.</p>
             <div class="card-meta">
                 <span>Категория: Обучение и Карьера</span>
                 <span>Тесты 2026 →</span>
@@ -394,12 +430,72 @@
             </div>
         </a>
         
-        <a href="timeweb-cloud-vs-netology-ai.html" class="catalog-card">
+        <a href="sprinthost-vs-netology-ai.html" class="catalog-card">
             <div class="card-pair">
-                <span class="pair-names">Спринтхост (Sprinthost) против Нетология (ИИ Курсы)</span>
+                <span class="pair-names">Спринтхост (Sprinthost) против ProductStar (РБК IT-Курсы)</span>
                 <span class="vs-badge">VS</span>
             </div>
-            <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с Нетология (ИИ Курсы).</p>
+            <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с ProductStar (РБК IT-Курсы).</p>
+            <div class="card-meta">
+                <span>Категория: Хостинг и VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="adminvps-vs-sprinthost.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">AdminVPS против Спринтхост (Sprinthost)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Премиальный хостинг и мощные NVMe VDS серверы по системе 'Все включено': бесплатное администрирование и защита от DDoS. Сравнение с Спринтхост (Sprinthost).</p>
+            <div class="card-meta">
+                <span>Категория: VPS & VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="timeweb-cloud-vs-github-copilot.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Спринтхост (Sprinthost) против GitHub Copilot</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с GitHub Copilot.</p>
+            <div class="card-meta">
+                <span>Категория: Хостинг и VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="timeweb-cloud-vs-cursor-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Спринтхост (Sprinthost) против Cursor AI</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с Cursor AI.</p>
+            <div class="card-meta">
+                <span>Категория: Хостинг и VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="timeweb-cloud-vs-chatgpt-4o.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Спринтхост (Sprinthost) против ChatGPT (GPT-4o)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с ChatGPT (GPT-4o).</p>
+            <div class="card-meta">
+                <span>Категория: Хостинг и VDS Серверы</span>
+                <span>Тесты 2026 →</span>
+            </div>
+        </a>
+        
+        <a href="timeweb-cloud-vs-netology-ai.html" class="catalog-card">
+            <div class="card-pair">
+                <span class="pair-names">Спринтхост (Sprinthost) против ProductStar (РБК IT-Курсы)</span>
+                <span class="vs-badge">VS</span>
+            </div>
+            <p class="card-summary">Ведущий российский хостинг и скоростные VDS: NVMe диски, аптайм 99.9%, перенос сайтов и защита от DDoS. Сравнение с ProductStar (РБК IT-Курсы).</p>
             <div class="card-meta">
                 <span>Категория: Хостинг и VDS Серверы</span>
                 <span>Тесты 2026 →</span>

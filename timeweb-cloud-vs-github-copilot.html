@@ -177,7 +177,9 @@
         .promo-banner { background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid var(--border-focus); border-radius: 16px; padding: 28px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-sizing: border-box; }
         .promo-content h3 { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
         .promo-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
-        .promo-btn { background: var(--accent-emerald); color: #fff; font-weight: 600; padding: 12px 22px; border-radius: 10px; text-decoration: none; white-space: nowrap; font-size: 14px; }
+        .promo-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .promo-btn { background: var(--accent-emerald); color: #fff; font-weight: 600; padding: 12px 20px; border-radius: 10px; text-decoration: none; white-space: nowrap; font-size: 13px; text-align: center; }
+        .promo-btn-alt { background: #ea580c; color: #fff; font-weight: 600; padding: 12px 20px; border-radius: 10px; text-decoration: none; white-space: nowrap; font-size: 13px; text-align: center; }
 
         .faq-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; margin-bottom: 50px; box-sizing: border-box; }
         .faq-item { border-bottom: 1px solid var(--border-subtle); padding: 14px 0; }
@@ -206,7 +208,8 @@
             .metric-col span { font-size: 11px; }
             .metric-col strong { font-size: 13px; text-align: right; word-break: break-word; }
             .promo-banner { padding: 18px 14px; gap: 14px; }
-            .promo-btn { width: 100%; text-align: center; white-space: normal; box-sizing: border-box; }
+            .promo-actions { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+            .promo-btn, .promo-btn-alt { width: 100%; text-align: center; white-space: normal; box-sizing: border-box; }
             .header-inner { padding: 10px 14px; }
             .header-inner .nav-right a { display: none; }
             .box { padding: 18px 14px; }
@@ -299,13 +302,16 @@
             </div>
         </div>
 
-        <!-- Sprinthost / Hosting Recommendation Banner -->
+        <!-- Sprinthost & AdminVPS Recommendation Banner -->
         <div class="promo-banner">
             <div class="promo-content">
                 <h3>Нужен надежный хостинг или быстрый VDS-сервер в РФ?</h3>
-                <p>Разворачивайте сайты, скрипты автоматизации и Telegram-ботов на скоростных серверах в Санкт-Петербурге с круглосуточной поддержкой и аптаймом 99.9% на Спринтхост.</p>
+                <p>Разворачивайте сайты, скрипты автоматизации и Telegram-ботов на скоростных NVMe серверах в РФ и Европе с аптаймом 99.9% и защитой от DDoS.</p>
             </div>
-            <a href="https://dkfrh.com/g/mxmtlx74bh7c3a513d16b183dfeeb8/?erid=MvGzQC98w3Z1gMq1kxXQnm7r" target="_blank" rel="noopener nofollow" class="promo-btn">Выбрать тариф от 169 ₽ →</a>
+            <div class="promo-actions">
+                <a href="https://dkfrh.com/g/mxmtlx74bh7c3a513d16b183dfeeb8/?erid=MvGzQC98w3Z1gMq1kxXQnm7r" target="_blank" rel="noopener nofollow" class="promo-btn">Спринтхост от 169 ₽ →</a>
+                <a href="https://naiawork.com/g/3s9n4xo7za7c3a513d16f771e68994/?erid=MvGzQC98w3Z1gMq1oRvTqi6B" target="_blank" rel="noopener nofollow" class="promo-btn-alt">AdminVPS от 199 ₽ →</a>
+            </div>
         </div>
 
         <div class="section-head">
@@ -341,13 +347,16 @@
             </div>
         </div>
 
-        <!-- Netology / Skillbox Education Banner -->
-        <div class="promo-banner" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%); border-color: rgba(236, 72, 153, 0.3);">
+        <!-- ProductStar & VseSdal Education Banner -->
+        <div class="promo-banner" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%); border-color: rgba(99, 102, 241, 0.3);">
             <div class="promo-content">
-                <h3>Хотите освоить нейросети и промпт-инжиниринг профессионально?</h3>
-                <p>Официальные курсы от ведущих образовательных центров России (Нетология): освойте работу с ChatGPT, Midjourney, Claude и автоматизацию бизнеса с нуля.</p>
+                <h3>Обучение нейросетям или помощь с IT-задачами</h3>
+                <p>Осваивайте профессии будущего на курсах ProductStar (группа РБК) или получайте быструю помощь экспертов с написанием кода, дипломами и проектами на «Всё Сдал!».</p>
             </div>
-            <a href="https://netology.ru/?ref=stackprobe_ru" target="_blank" rel="noopener nofollow" class="promo-btn" style="background: #db2777;">Выбрать курс со скидкой →</a>
+            <div class="promo-actions">
+                <a href="https://naiawork.com/g/t9pnpumx6q7c3a513d165e445e6c7b/?erid=MvGzQC98w3Z1gMq1pRgm23vZ" target="_blank" rel="noopener nofollow" class="promo-btn" style="background: #4f46e5;">Курсы IT от РБК →</a>
+                <a href="https://kpwfp.com/g/79so3ge9rz7c3a513d165a358eac64/?erid=2bL9aMPo2e49hMef4rqy6X6Wdu" target="_blank" rel="noopener nofollow" class="promo-btn-alt" style="background: #eab308; color: #18181b; font-weight: 700;">Помощь с кодом («Всё Сдал!») →</a>
+            </div>
         </div>
 
         <div class="section-head">
@@ -378,13 +387,13 @@
                 <span>Сравнить характеристики и цены в РФ →</span>
             </a>
             
-            <a href="timeweb-cloud-vs-cursor-ai.html" class="related-card">
-                <h5>Спринтхост (Sprinthost) против Cursor AI</h5>
+            <a href="sprinthost-vs-github-copilot.html" class="related-card">
+                <h5>Спринтхост (Sprinthost) против GitHub Copilot</h5>
                 <span>Сравнить характеристики и цены в РФ →</span>
             </a>
             
-            <a href="timeweb-cloud-vs-chatgpt-4o.html" class="related-card">
-                <h5>Спринтхост (Sprinthost) против ChatGPT (GPT-4o)</h5>
+            <a href="timeweb-cloud-vs-cursor-ai.html" class="related-card">
+                <h5>Спринтхост (Sprinthost) против Cursor AI</h5>
                 <span>Сравнить характеристики и цены в РФ →</span>
             </a>
             
